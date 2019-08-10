@@ -44,18 +44,20 @@ s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.bind((host,port))
 s.setblocking(0)
 
+ver = "1.1"
+
+print("\n Stone Chat Client "+ver+"\n")
 serverIP = input("Server IP : ")
 
 serverPort = 8080
 server = (serverIP, serverPort)
 
 alias = input("Name: ")
+print("\n")
 aliasold = ""
 
 rT = threading.Thread(target = receving, args = ("RecvThread",s))
 rT.start()
-
-
 
 while shutdown == False:
 	if join == False:
@@ -75,13 +77,15 @@ while shutdown == False:
 					print(" /exit - выход с сервера")
 					print(" /rename - изменить имя")
 					print(" /info - информация о клиенте")
+					print(" /clear w - очистка консоли если у вас windows")
+					print(" /clear l - очистка консоли если у вас linux")
 					print("\n")
 					print(" COMMANDS FOR ADMINS")
 					print(" /stop - остановить сервер")
 					print(" /clear log - очиска файла лога")
 					print("\n")
 				elif message == "/info":
-					print("\n Stone Chat Client v1.0\n")
+					print("\n Stone Chat Client "+ver+"\n")
 					print("[ IP Server : "+serverIP+ " ][ Your IP : "+host+" ]")
 					print(" Your Name : "+alias)
 					print("\n")
@@ -101,6 +105,12 @@ while shutdown == False:
 						crypt += chr(ord(i)^key)
 					message = crypt
 					s.sendto(("["+alias + "] == "+message).encode("utf-8"),server)
+				elif message == "/clear w":
+					os.system("cls")
+					print("\n Stone Chat Client "+ver+"\n")
+				elif message == "/clear l":
+					os.system("clear")
+					print("\n Stone Chat Client "+ver+"\n")
 				else:
 					print("[ ERROR COMMAND ]");
 			else:
