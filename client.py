@@ -1,6 +1,6 @@
 #
 #	 Stone Chat
-#       Client  v2.0
+#       Client  v2.1
 #
 # [Stolar Studio]
 #
@@ -8,7 +8,7 @@
 
 import socket, threading, time, os, os.path, configparser
 
-ver = "2.0"
+ver = "2.1"
 
 name = "user"
 key = 8194
