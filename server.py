@@ -1,6 +1,6 @@
 #
 #	 Stone Chat
-#       Server  v1.0
+#       Server  v2.0
 #
 # [Stolar Studio]
 #
@@ -14,20 +14,61 @@ port = 8080
 clients = []
 users = []
 
+ver = "2.0"
+
 #settings
 printError = False
 
 key = 8194
 
+
+def code(msg, key):
+	crypt = ""
+	for i in msg:
+		crypt += chr(ord(i)^int(key))
+	return crypt
+
+def decode(message, key):
+	decrypt = ""; k = False
+	for i in message:
+		if i == ":":
+			k = True
+			decrypt += i
+		elif k == False or i == " ":
+			decrypt += i
+		else:
+			decrypt += chr(ord(i)^int(key))
+	return decrypt
+
+
 s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.bind((host,port))
 
 quit = False
+print("\n Stone Chat Server "+ver+"\n")
 print("IP : " + host)
 print("[ Server Started ]")
 
-adminsIP = [host]
-adminsName = ["admin"]
+adminsIP = []
+adminsName = []
+
+if os.path.exists("adminsIP.txt"):
+	with open("adminsIP.txt") as f:
+		adminsIP = f.read().splitlines()
+else:
+	f = open("adminsIP.txt", "w")
+	f.write(host)
+	f.close()
+	adminsIP = [host]
+	
+if os.path.exists("adminsName.txt"):
+	with open("adminsName.txt") as f:
+		adminsName = f.read().splitlines()
+else:
+	f = open("adminsName.txt", "w")
+	f.write("admin\n")
+	f.close()
+	adminsName = ["admin"]
 
 itsatime = time.strftime("%Y-%m-%d-%H.%M.%S", time.localtime())
 f = open("log.txt", "a")
@@ -47,37 +88,18 @@ while not quit:
 		
 		print("["+addr[0]+"]=["+str(addr[1])+"]=["+itsatime+"]/",end="")
 
-
-		decrypt = ""; k = False
-		for i in data.decode("utf-8"):
-			if i == ":":
-				k = True
-				decrypt += i
-			elif k == False or i == " ":
-				decrypt += i
-			else:
-				decrypt += chr(ord(i)^key)
+		decrypt = decode(data.decode("utf-8"), key)
+		
 		print(decrypt)
-
-		decryptcmd = ""; k = False
-		for i in data.decode("utf-8"):
-			if i == "=":
-				k = True
-				decryptcmd += i
-			elif k == False or i == " ":
-				decryptcmd += i
-			else:
-				decryptcmd += chr(ord(i)^key)
-		#print(decryptcmd)
 		
 		for i in range(len(adminsIP)):
 			if adminsIP[i] == addr[0]:
 				for j in range(len(adminsName)):
-					if decryptcmd == "[" + adminsName[j] + "] == /stop":
+					if decrypt == "[" + adminsName[j] + "] :: /stop":
 						quit = True
-					elif decryptcmd == "[" + adminsName[j] + "] == /clear log":
+					elif decrypt == "[" + adminsName[j] + "] :: /clear log":
 						f = open("log.txt", "w")
-						#f.write("[" + itsatime + "]=[ Clear Log ]\n")
+						f.write("[" + itsatime + "]=[ Clear Log ]\n")
 						f.close()
 						data = "[ Log Cleared ]"
 						s.sendto(data.encode("utf-8"),addr)
@@ -91,7 +113,6 @@ while not quit:
 			if addr != client:
 				s.sendto(data,client)
 	except:	
-		#quit = True
 		if printError:
 			print("[ ERROR ]")
 			itsatime = time.strftime("%Y-%m-%d-%H.%M.%S", time.localtime())
