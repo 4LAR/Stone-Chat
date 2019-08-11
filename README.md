@@ -6,6 +6,6 @@ system requirements:
   <li>python 3.7</li>
 </ul>
 <br>
-how to run
-Windows: py client.py
+how to run<br>
+Windows: py client.py<>br
 Linux: python3 client.py 
