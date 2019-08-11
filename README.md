@@ -7,5 +7,7 @@ system requirements:
 </ul>
 <br>
 how to run<br>
-Windows: py client.py<>br
-Linux: python3 client.py 
+<ul>
+  <li>Windows: py client.py</li>
+  <li>Linux: python3 client.py</li>
+<ul>
