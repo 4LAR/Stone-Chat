@@ -1,5 +1,5 @@
 # Stone Chat
-Version 2.1<br>
+Version 2.2<br>
 system requirements:
 <ul>
   <li>python 3.7</li>
