@@ -1,9 +1,11 @@
 #
 #	 Stone Chat
-#       Client  v2.1
+#        [Client]
 #
 # [Stolar Studio]
 #
+
+ver = "2.2"
 
 import socket, threading, time, os, configparser
 
@@ -17,15 +19,49 @@ config.read("client_settings.txt")
 os_type = config.get("Settings", "os")
 alias = config.get("Settings", "name")
 key = config.get("Settings", "key")
-
-def code(msg, key):
+enc_type = config.get("Settings", "encryption")
+def ascii_code(msg, sc = 1, simv = " "):
+    crypt = ""
+    for j in range(int(sc)):
+        for i in msg:
+            crypt += str(ord(i))+simv
+        msg = crypt; crypt = ""
+    return msg
+def ascii_decode(msg, sc = 1, simv = " "):
+    dec_buf = ""; decode = ""
+    for j in range(int(sc)):
+        for i in msg:
+            if i == simv:
+                decode += chr(int(dec_buf))
+                dec_buf = ""
+            else:
+                dec_buf += i
+        msg = decode; decode = ""
+    return msg
+def ascii_plus_code(msg):
+    msg = ascii_code(msg,2,"/")
+    crypt = ""
+    for i in msg:
+        if not i == "/":
+            crypt += i
+    return crypt
+def ascii_plus_decode(msg):
+    j = 0; decrypt = ""
+    for i in msg:
+        j += 1
+        decrypt += i
+        if j == 2:
+            decrypt += "/"
+            j = 0
+    return ascii_decode(decrypt, 2, "/")
+def code_key(msg, key):
 	crypt = ""
 	for i in msg:
 		crypt += chr(ord(i)^int(key))
 	return crypt
 
-def decode(message, key):
-	decrypt = ""; k = False
+def decode_key(message, key):
+	decrypt = ""; k = False;decrypt_ascii = ""
 	for i in message:
 		if i == ":":
 			k = True
@@ -34,21 +70,43 @@ def decode(message, key):
 			decrypt += i
 		else:
 			decrypt += chr(ord(i)^int(key))
+			decrypt_ascii += chr(ord(i)^int(key))
+	if enc_type == "2":
+		decrypt_ascii = ascii_decode(decrypt_ascii, 1, "/")
+		if decrypt_ascii[:7] == "<ASCII>":
+			decrypt = decrypt_ascii[7:]
+	elif enc_type == "3":
+		decrypt_ascii = ascii_plus_decode(decrypt_ascii)
+		if decrypt_ascii[:8] == "<ASCII+>":
+			decrypt = decrypt_ascii[8:]
 	return decrypt
-
+	
+def code(msg):
+	if enc_type == "0":
+		return msg
+	elif enc_type == "1":
+		return code_key(msg,key)
+	elif enc_type == "2":
+		return code_key(ascii_code("<ASCII>"+msg,1,"/"),key)
+	elif enc_type == "3":
+		return code_key(ascii_plus_code("<ASCII+>"+msg),key)
+def decode(msg):
+	if enc_type == "0":
+		return msg
+	else:
+		return decode_key(msg,key)
+    
 def clrscr():
 	if "1" in os_type:
 		os.system("clear")
 	elif "2" in os_type:
 		os.system("cls")
-
-
 def receving (name, sock):
 	while not shutdown:
 		try:
 			while True:
 				data, addr = sock.recvfrom(1024)
-				print(decode(data.decode("utf-8"), key))
+				print(decode(data.decode("utf-8")))
 				time.sleep(0.2)
 		except:
 			pass
@@ -60,8 +118,6 @@ log = True
 s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.bind((host,port))
 s.setblocking(0)
-
-ver = "2.1"
 
 clrscr()
 print("\n Stone Chat Client "+ver+"\n")
@@ -106,14 +162,14 @@ while shutdown == False:
 					print(" Your Name : "+alias)
 					print("\n")
 				elif message == "/stop" or message == "/clear log":
-					s.sendto(("["+alias + "] :: "+code(message,key)).encode("utf-8"),server)
+					s.sendto(("["+alias + "] :: "+code(message)).encode("utf-8"),server)
 				elif message == "/clear":
 					clrscr()
 				else:
 					print("[ ERROR COMMAND ]");
 			else:
 				if message != "":
-					s.sendto(("["+alias + "] :: "+code(message,key)).encode("utf-8"),server)
+					s.sendto(("["+alias + "] :: "+code(message)).encode("utf-8"),server)
 				
 				time.sleep(0.2)
 		except:

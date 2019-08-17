@@ -1,16 +1,12 @@
 #
 #	 Stone Chat
-#       Server  v2.1
+#         [Server]  
 #
 # [Stolar Studio]
 #
-
+ver = "2.2"
 
 import socket, time, os.path, configparser
-
-
-
-
 
 def namew(msg):
 	name = ""
@@ -41,6 +37,43 @@ def decode(message, key):
 		else:
 			decrypt += chr(ord(i)^int(key))
 	return decrypt
+def ascii_code(msg, sc = 1, simv = " "):
+    crypt = ""
+    for j in range(int(sc)):
+        for i in msg:
+            crypt += str(ord(i))+simv
+        msg = crypt; crypt = ""
+    return msg
+
+def ascii_decode(msg, sc = 1, simv = " "):
+    dec_buf = ""; decode = ""
+    for j in range(int(sc)):
+        for i in msg:
+            if i == simv:
+                decode += chr(int(dec_buf))
+                dec_buf = ""
+            else:
+                dec_buf += i
+        msg = decode; decode = ""
+    return msg
+
+def ascii_plus_code(msg):
+    msg = ascii_code(msg,2,"/")
+    crypt = ""
+    for i in msg:
+        if not i == "/":
+            crypt += i
+    return crypt
+    
+def ascii_plus_decode(msg):
+    j = 0; decrypt = ""
+    for i in msg:
+        j += 1
+        decrypt += i
+        if j == 2:
+            decrypt += "/"
+            j = 0
+    return ascii_decode(decrypt, 2, "/")
 
 host = socket.gethostbyname(socket.gethostname())
 port = 8080
@@ -50,8 +83,6 @@ white_list = "0"
 clients = []
 white_list_clients = []
 users = []
-
-ver = "2.1"
 
 printError = False
 vip = False
@@ -65,12 +96,12 @@ if not os.path.exists("server_settings.txt"):
 	config.set("Settings", "key", str(key))
 	with open("server_settings.txt", "w") as config_file:
 		config.write(config_file)
-else:
-	config = configparser.ConfigParser()
-	config.read("server_settings.txt")
-	white_list = config.get("Settings", "white-list")
-	port = config.get("Settings", "port")
-	key = config.get("Settings", "key")
+		
+config = configparser.ConfigParser()
+config.read("server_settings.txt")
+white_list = config.get("Settings", "white-list")
+port = config.get("Settings", "port")
+key = config.get("Settings", "key")
 	
 if "1" in white_list:
 	if os.path.exists("white_list.txt"):
@@ -92,10 +123,6 @@ print("\n[ Server Started ]")
 adminsIP = []
 adminsName = []
 
-
-
-
-	
 if os.path.exists("adminsIP.txt"):
 	with open("adminsIP.txt") as f:
 		adminsIP = f.read().splitlines()
