@@ -7,7 +7,7 @@
 
 import socket, threading, time, os, os.path, configparser
 
-ver = "2.2"
+ver = "2.3"
 
 name = "user"
 key = 8194

@@ -4,7 +4,7 @@
 #
 # [Stolar Studio]
 #
-ver = "2.2"
+ver = "2.3"
 
 import socket, time, os.path, configparser
 
@@ -75,7 +75,19 @@ def ascii_plus_decode(msg):
             j = 0
     return ascii_decode(decrypt, 2, "/")
 
-host = socket.gethostbyname(socket.gethostname())
+def get_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(('10.255.255.255', 1))
+        ip = s.getsockname()[0]
+    except Exception:
+        ip = '127.0.0.1'
+    finally:
+        s.close()
+    return ip
+
+#host = socket.gethostbyname(socket.gethostname())
+host = get_ip() 
 port = 8080
 
 white_list = "0"
@@ -92,6 +104,7 @@ if not os.path.exists("server_settings.txt"):
 	config = configparser.ConfigParser()
 	config.add_section("Settings")
 	config.set("Settings", "white-list", str(white_list))
+	config.set("Settings", "ip", str(get_ip() ))
 	config.set("Settings", "port", str(port))
 	config.set("Settings", "key", str(key))
 	with open("server_settings.txt", "w") as config_file:
@@ -100,6 +113,7 @@ if not os.path.exists("server_settings.txt"):
 config = configparser.ConfigParser()
 config.read("server_settings.txt")
 white_list = config.get("Settings", "white-list")
+host = config.get("Settings", "ip")
 port = config.get("Settings", "port")
 key = config.get("Settings", "key")
 	

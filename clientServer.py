@@ -5,7 +5,7 @@
 # [Stolar Studio]
 #
 
-ver = "2.2"
+ver = "2.3"
 
 import socket, threading, time, os, configparser
 
@@ -110,11 +110,24 @@ def receving (name, sock):
 				time.sleep(0.2)
 		except:
 			pass
-host = socket.gethostbyname(socket.gethostname())
+			
+def get_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(('10.255.255.255', 1))
+        ip = s.getsockname()[0]
+    except Exception:
+        ip = '127.0.0.1'
+    finally:
+        s.close()
+    return ip
+			
+#host = socket.gethostbyname(socket.gethostname())
+host = get_ip() 
 port = 0
 
 log = True
-
+    
 s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.bind((host,port))
 s.setblocking(0)
