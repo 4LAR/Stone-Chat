@@ -27,29 +27,54 @@ ul {
  }
 
 li {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .web_class {
   overflow: auto;
-
 }
 
-.web_input_container {
+.message_input_container {
   position: fixed;
-  top: 200px;
-  left: 560px;
+  bottom: 1px;
+  left: 300px;
   color: #808080;
   border: 0;
-  background-color: #333336;
+  background-color: #222226;
   padding: 12px 20px;
   margin: 8px 0;
   border-radius: 10px;
   width: 800px;
+  height: 38px;
 
 }
 
-.web_input_container:hover {
+.messages_list_class {
+  position: fixed;
+  --overflow: auto;
+  overflow-y: scroll;
+  left: 200px;
+  bottom: 55px;
+  width: 100%;
+  height: 85%;
+
+}
+
+.message_class {
+  position: relative;
+  top: 0%;
+  width: 98.5%;
+  height: 60px;
+  background-color: #26262A;
+  margin: 5px 0;
+
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+.message_input_container:hover {
   transition:0.2s all;
   background-color: #39393C;
 }
@@ -110,6 +135,15 @@ li {
   width: 200px;
   height: 100%;
   top: 0px;
+}
+
+.bottom_bar_container {
+  background-color: #39393C;
+  position: fixed;
+  left: 0px;
+  width: 100%;
+  height: 55px;
+  bottom: 0px;
 }
 
 .icon {
