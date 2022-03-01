@@ -1,3 +1,40 @@
+
+/* theme */
+.light {
+  filter: invert(100%) hue-rotate(180deg);
+  transition:1s all;
+}
+.light img:not(.icon, .icon_no) {
+  filter: invert(100%) hue-rotate(180deg);
+  --transition:1s all;
+}
+
+.light body {
+  transition:1s all;
+}
+
+.dark {
+  transition:1s all;
+}
+
+/* scroll */
+.messages_list_class::-webkit-scrollbar {
+  width: 12px;
+}
+
+.messages_list_class::-webkit-scrollbar-track {
+  background: #222226;
+}
+
+.messages_list_class::-webkit-scrollbar-thumb {
+  background-color: #808080;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
 p {
   color: #808080; /* Цвет текста */
 }
@@ -20,20 +57,38 @@ a {
 
 li {
   list-style-type: none;
- }
+}
+
 ul {
-	margin-left: 0;
-	padding-left: 0;
- }
+  margin-left: 0;
+  padding-left: 0;
+}
 
 li {
   margin-bottom: 5px;
 }
 
-.web_class {
-  overflow: auto;
+textarea:focus, input:focus{
+  outline: none;
 }
 
+.vl_height {
+  border-left: 2px solid #808080;
+  height: 100%;
+  position: absolute;
+  margin-left: -3px;
+  top: 0;
+}
+
+.vl_width {
+  border-top: 2px solid #808080;
+  height: 100%;
+  position: absolute;
+  margin-left: -3px;
+  top: 0;
+}
+
+/* messages */
 .message_input_container {
   position: fixed;
   bottom: 1px;
@@ -55,8 +110,9 @@ li {
   overflow-y: scroll;
   left: 200px;
   bottom: 55px;
-  width: 100%;
-  height: 85%;
+  width: 1080px;
+  height: 610px;
+  scroll-behavior: smooth;
 
 }
 
@@ -64,61 +120,42 @@ li {
   position: relative;
   top: 0%;
   width: 98.5%;
-  height: 60px;
-  background-color: #26262A;
+  --height: 90px;
+  --min-height: 60px;
+  background-color: #222226;
   margin: 5px 0;
 
 }
 
-textarea:focus, input:focus{
-  outline: none;
+.message_class:hover {
+  background-color: #26262A;
+}
+
+.message_username_class {
+  position: absolute;
+  left: 70px;
+  top: -8px;
+}
+
+.message_text_class {
+  position: absolute;
+  left: 70px;
+  top: 20px;
+  --margin: -20px 70px;
+}
+
+.message_time_class {
+  position: absolute;
+  right: 10px;
+  margin: -50px 0px;
 }
 
 .message_input_container:hover {
   transition:0.2s all;
-  background-color: #39393C;
+  --background-color: #39393C;
 }
 
-.search_button_container {
-  border-radius: 10px;
-  background-color: #353538;
-  position: fixed;
-  left: 1370px;
-  width: 125px;
-  height: 40px;
-  top: 208px;
-  cursor: pointer;
-}
-
-.search_button_container:hover {
-  transition:0.2s all;
-  background-color: #39393C;
-}
-
-.icon_search {
-  filter: invert(40%);
-  transition:0.2s all;
-}
-
-.search_button_container:hover img {
-  filter: invert(50%);
-}
-
-
-.addr_input_container {
-  position: fixed;
-  top: 0px;
-  left: 161px;
-  color: #808080;
-  border: 0;
-  background-color: #333336;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border-radius: 10px;
-  width: 1600px;
-  --transition:0.2s all;
-}
-
+/*  */
 .top_bar_container {
   background-color: #39393C;
   position: fixed;
@@ -146,6 +183,26 @@ textarea:focus, input:focus{
   bottom: 0px;
 }
 
+/* user */
+.user_container {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+
+  background-color: #353538;
+  transition:0.2s all;
+
+  width: 200px;
+  height: 55px;
+
+}
+
+.user_container:hover {
+  background-color: #39393C;
+
+}
+
+/* icons */
 .icon {
   filter: invert(40%);
   transition:0.2s all;

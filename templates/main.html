@@ -13,11 +13,9 @@
 
     <!--messages list-->
     <div class="messages_list_class">
-      <ul>
+      <ul id="chat_messages_list">
         <li>
-          <div class="message_class">
-            <p>123</p>
-          </div>
+
         </li>
 
       </ul>
@@ -25,7 +23,8 @@
 
     <!--message input-->
     <div class="bottom_bar_container">
-	    <input class="message_input_container" type=text placeholder="message...">
+	    <input id="message_input" class="message_input_container" type=text placeholder="message..." onkeydown="search(this)">
+      <image style="position: absolute; right: 130px; bottom: 11px" class="icon" width="35" height="35" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjIwcHgiIGhlaWdodD0iMThweCIgdmlld0JveD0iMCAwIDIwIDE4IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPg0KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggNTIuNSAoNjc0NjkpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPg0KICAgIDx0aXRsZT5zZW5kPC90aXRsZT4NCiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4NCiAgICA8ZyBpZD0iSWNvbnMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPg0KICAgICAgICA8ZyBpZD0iUm91bmRlZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM3NC4wMDAwMDAsIC0xNTI5LjAwMDAwMCkiPg0KICAgICAgICAgICAgPGcgaWQ9IkNvbnRlbnQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMC4wMDAwMDAsIDE0MjguMDAwMDAwKSI+DQogICAgICAgICAgICAgICAgPGcgaWQ9Ii1Sb3VuZC0vLUNvbnRlbnQtLy1zZW5kIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNzIuMDAwMDAwLCA5OC4wMDAwMDApIj4NCiAgICAgICAgICAgICAgICAgICAgPGc+DQogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSIwIDAgMjQgMCAyNCAyNCAwIDI0Ij48L3BvbHlnb24+DQogICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMy40LDIwLjQgTDIwLjg1LDEyLjkyIEMyMS42NiwxMi41NyAyMS42NiwxMS40MyAyMC44NSwxMS4wOCBMMy40LDMuNiBDMi43NCwzLjMxIDIuMDEsMy44IDIuMDEsNC41MSBMMiw5LjEyIEMyLDkuNjIgMi4zNywxMC4wNSAyLjg3LDEwLjExIEwxNywxMiBMMi44NywxMy44OCBDMi4zNywxMy45NSAyLDE0LjM4IDIsMTQuODggTDIuMDEsMTkuNDkgQzIuMDEsMjAuMiAyLjc0LDIwLjY5IDMuNCwyMC40IFoiIGlkPSLwn5S5SWNvbi1Db2xvciIgZmlsbD0iIzFEMUQxRCI+PC9wYXRoPg0KICAgICAgICAgICAgICAgICAgICA8L2c+DQogICAgICAgICAgICAgICAgPC9nPg0KICAgICAgICAgICAgPC9nPg0KICAgICAgICA8L2c+DQogICAgPC9nPg0KPC9zdmc+" />
 
     </div>
 
@@ -34,8 +33,41 @@
 
     </div>
 
+    <!--user-->
+    <div class="user_container">
+      <image class="icon" width="50" height="50" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIFNWRyBFZGl0b3IgLSBodHRwOi8vZ2l0aHViLmNvbS9temFsaXZlL1NWRyBFZGl0b3IvIC0tPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBoZWlnaHQ9IjM1MiIgd2lkdGg9IjM1MiIgeT0iLTEiIHg9Ii0xIiBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiLz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8cmVjdCByeD0iMTciIGhlaWdodD0iMzAwIiB3aWR0aD0iMzAwIiB5PSIyMyIgeD0iMjgiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZT0iIzAwMCIgZmlsbD0ibm9uZSIgaWQ9InN2Z18yIi8+CiAgPHBhdGggZD0ibTIyOS43MzUwMDEsMTU5LjMzMDAwMmMwLDAgOC45NTE5OTYsLTM2LjgwMjAwMiAwLC00OS4yNjkwMDVjLTguOTYyOTk3LC0xMi40NjY3OTcgLTEyLjUzNzk5NCwtMjAuNzcwOTk2IC0zMi4yNDYwMDIsLTI2LjcxNTk5NnMtMTIuNTI2OTkzLC00Ljc2MDMgLTI2Ljg1Njk5NSwtNC4xNTIxYy0xNC4zMzAwMDIsMC41OTc1OTUgLTI2LjI3NzAwOCw4LjMwNDE5OSAtMjYuMjc3MDA4LDEyLjQ1NjI5OWMwLDAgLTguOTUxOTk2LDAuNTk3NjAzIC0xMi41MjU5ODYsNC4xNjI1OThjLTMuNTg2MDE0LDMuNTY0OTAzIC05LjU1NDAwOCwyMC4xNzMyMDMgLTkuNTU0MDA4LDI0LjMzNjIwNXMyLjk4NDAwMSwzMi4wNjI5OTYgNS45Njc5OTUsMzcuOTk3OTkzbC0zLjU1Mjk5NCwxLjE4NDAwNmMtMi45ODQwMDEsMzQuNDIzMDA0IDExLjkzNjAwNSwzOC41ODU5OTkgMTEuOTM2MDA1LDM4LjU4NTk5OWM1LjM2Nzk5NiwzMi4wNjMwMDQgMTAuNzQ0OTk1LDE4LjQxMDk5NSAxMC43NDQ5OTUsMjYuNzE2MDAzcy01LjM3Njk5OSw1LjM0NyAtNS4zNzY5OTksNS4zNDdzLTQuNzY2OTk4LDEzLjA1NDAwMSAtMTYuNzAzMDAzLDE3LjgwNDAwMWMtMTEuOTM1OTk3LDQuNzM4OTk4IC03OC4xOTgyLDMwLjI1OTk5NSAtODMuNTg2NTAyLDM1LjYwNzAxYy01LjM4ODE5OSw1LjM1Nzk3MSAtNC43NzY2LDMwLjI4MDk3NSAtNC43NzY2LDMwLjI4MDk3NWwyODQuMTQzMTE2LDBjMCwwIDAuNjIxOTc5LC0yNC45MjMwMDQgLTQuNzY2MDIyLC0zMC4yODA5NzVjLTUuMzk4OTg3LC01LjM1ODAwMiAtNzEuNjYwOTk1LC0zMC44NjgwMTEgLTgzLjU5NywtMzUuNjA3MDFjLTExLjkzNTk4OSwtNC43NSAtMTYuNzAxOTk2LC0xNy44MDQwMDEgLTE2LjcwMTk5NiwtMTcuODA0MDAxcy01LjM3Nzk5MSwyLjk1NzAwMSAtNS4zNzc5OTEsLTUuMzQ3czUuMzc3OTkxLDUuMzQ3IDEwLjc1NDk5LC0yNi43MTYwMDNjMCwwIDE0LjkxMDAwNCwtNC4xNjI5OTQgMTEuOTM3MDEyLC0zOC41ODU5OTlsLTMuNTg1MDA3LDB6IiBzdHJva2Utd2lkdGg9IjExIiBzdHJva2Utb3BhY2l0eT0ibnVsbCIgc3Ryb2tlPSIjMDAwIiBmaWxsPSIjMDAwMDAwIiBpZD0ic3ZnXzEiLz4KIDwvZz4KPC9zdmc+" />
+      <h2 id="user_name" style="position: fixed; left: 55px; top: -10px;">100LAR</h2>
+      <p id="user_ip" style="position: fixed; left: 55px; top: 18px;">IP: 192.168.1.1</p>
+    </div>
+    <div class="vl_width" style="left: 0px; top: 54px; width: 203px;"></div>
+
   </body>
   <script type="text/javascript">
+
+    function search(ele) {
+      if(event.key === 'Enter') {
+        //add_message("100LAR", document.getElementById("message_input").value);
+      }
+    }
+
+    function add_message(name, text, data="4:20 20.4.2022") {
+      var ul = document.getElementById("chat_messages_list");
+    	var li = document.createElement("li");
+
+      li.innerHTML = `
+        <div class="message_class">
+          <image class="icon" width="60" height="60" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIFNWRyBFZGl0b3IgLSBodHRwOi8vZ2l0aHViLmNvbS9temFsaXZlL1NWRyBFZGl0b3IvIC0tPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBoZWlnaHQ9IjM1MiIgd2lkdGg9IjM1MiIgeT0iLTEiIHg9Ii0xIiBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiLz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8cmVjdCByeD0iMTciIGhlaWdodD0iMzAwIiB3aWR0aD0iMzAwIiB5PSIyMyIgeD0iMjgiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZT0iIzAwMCIgZmlsbD0ibm9uZSIgaWQ9InN2Z18yIi8+CiAgPHBhdGggZD0ibTIyOS43MzUwMDEsMTU5LjMzMDAwMmMwLDAgOC45NTE5OTYsLTM2LjgwMjAwMiAwLC00OS4yNjkwMDVjLTguOTYyOTk3LC0xMi40NjY3OTcgLTEyLjUzNzk5NCwtMjAuNzcwOTk2IC0zMi4yNDYwMDIsLTI2LjcxNTk5NnMtMTIuNTI2OTkzLC00Ljc2MDMgLTI2Ljg1Njk5NSwtNC4xNTIxYy0xNC4zMzAwMDIsMC41OTc1OTUgLTI2LjI3NzAwOCw4LjMwNDE5OSAtMjYuMjc3MDA4LDEyLjQ1NjI5OWMwLDAgLTguOTUxOTk2LDAuNTk3NjAzIC0xMi41MjU5ODYsNC4xNjI1OThjLTMuNTg2MDE0LDMuNTY0OTAzIC05LjU1NDAwOCwyMC4xNzMyMDMgLTkuNTU0MDA4LDI0LjMzNjIwNXMyLjk4NDAwMSwzMi4wNjI5OTYgNS45Njc5OTUsMzcuOTk3OTkzbC0zLjU1Mjk5NCwxLjE4NDAwNmMtMi45ODQwMDEsMzQuNDIzMDA0IDExLjkzNjAwNSwzOC41ODU5OTkgMTEuOTM2MDA1LDM4LjU4NTk5OWM1LjM2Nzk5NiwzMi4wNjMwMDQgMTAuNzQ0OTk1LDE4LjQxMDk5NSAxMC43NDQ5OTUsMjYuNzE2MDAzcy01LjM3Njk5OSw1LjM0NyAtNS4zNzY5OTksNS4zNDdzLTQuNzY2OTk4LDEzLjA1NDAwMSAtMTYuNzAzMDAzLDE3LjgwNDAwMWMtMTEuOTM1OTk3LDQuNzM4OTk4IC03OC4xOTgyLDMwLjI1OTk5NSAtODMuNTg2NTAyLDM1LjYwNzAxYy01LjM4ODE5OSw1LjM1Nzk3MSAtNC43NzY2LDMwLjI4MDk3NSAtNC43NzY2LDMwLjI4MDk3NWwyODQuMTQzMTE2LDBjMCwwIDAuNjIxOTc5LC0yNC45MjMwMDQgLTQuNzY2MDIyLC0zMC4yODA5NzVjLTUuMzk4OTg3LC01LjM1ODAwMiAtNzEuNjYwOTk1LC0zMC44NjgwMTEgLTgzLjU5NywtMzUuNjA3MDFjLTExLjkzNTk4OSwtNC43NSAtMTYuNzAxOTk2LC0xNy44MDQwMDEgLTE2LjcwMTk5NiwtMTcuODA0MDAxcy01LjM3Nzk5MSwyLjk1NzAwMSAtNS4zNzc5OTEsLTUuMzQ3czUuMzc3OTkxLDUuMzQ3IDEwLjc1NDk5LC0yNi43MTYwMDNjMCwwIDE0LjkxMDAwNCwtNC4xNjI5OTQgMTEuOTM3MDEyLC0zOC41ODU5OTlsLTMuNTg1MDA3LDB6IiBzdHJva2Utd2lkdGg9IjExIiBzdHJva2Utb3BhY2l0eT0ibnVsbCIgc3Ryb2tlPSIjMDAwIiBmaWxsPSIjMDAwMDAwIiBpZD0ic3ZnXzEiLz4KIDwvZz4KPC9zdmc+">
+          <h2 class="message_username_class">` + name + `</h2>
+          <h3 class="message_text_class">` + text + `</h3>
+          <p class="message_time_class">` + data + `</p>
+        </div>
+    	`;
+
+    	li.setAttribute("id", "element4");
+    	ul.appendChild(li);
+    }
+    //for (let i=0; i < 10; i++)
+    //  add_message("100LAR", "");
 
   </script>
 </html>

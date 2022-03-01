@@ -80,7 +80,7 @@ class MainWindow(QMainWindow):
 
 os.environ[
         "QTWEBENGINE_CHROMIUM_FLAGS"
-    ] = "--disable-web-security --ignore-gpu-blacklist --enable-gpu-rasterization"
+    ] = "--disable-web-security --ignore-gpu-blacklist --enable-gpu-rasterization --enable-smooth-scrolling"
 
 os.environ[
         "QTWEBENGINE_REMOTE_DEBUGGING"
