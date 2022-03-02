@@ -7,10 +7,20 @@ from PyQt5.QtPrintSupport import *
 import os
 import sys
 
+from info import *
+
+def set_user_info():
+    window.run_js(window.browser, "set_user_info('%s', '%s')" % (get_name(), get_ip()))
+
 class WebEnginePage(QWebEnginePage):
     def javaScriptConsoleMessage(self, level, message, lineNumber, sourceID):
         global window
         print(message)
+        if message == 'load':
+            #window.run_js(window.browser, "add_message('admin', 'hello world')")
+            window.load_page = True
+            set_user_info()
+
 
 class MainWindow(QMainWindow):
     def loadCSS(self, view, path, name):
@@ -38,8 +48,17 @@ class MainWindow(QMainWindow):
         script.setWorldId(QWebEngineScript.ApplicationWorld)
         view.page().scripts().insert(script)
 
+    def run_js(self, view, function=''):
+        #SCRIPT = """
+        #(function(){%s})()
+        #""" % (function)
+
+        view.page().runJavaScript(function)
+
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
+
+        self.load_page = False
 
         self.setGeometry(100, 100, 1280, 720)
         self.setFixedSize(self.width(), self.height())
@@ -54,13 +73,12 @@ class MainWindow(QMainWindow):
         self.browser.loadFinished.connect(self.update_title)
         #self.browser.move(200, 300)
 
+        #self.run_js(self.browser, "add_message('admin', 'hello world')")
+
+
         self.show()
 
         self.setWindowIcon(QIcon('icon.png'))
-
-
-
-
 
     def update_title(self):
         title = self.browser.page().title()
