@@ -1,3 +1,4 @@
+
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
@@ -7,19 +8,29 @@ from PyQt5.QtPrintSupport import *
 import os
 import sys
 
+import json
+
 from info import *
+info = client_info()
+
+from net import *
 
 def set_user_info():
-    window.run_js(window.browser, "set_user_info('%s', '%s')" % (get_name(), get_ip()))
+    window.run_js(window.browser, "set_user_info('%s', '%s')" % (info.name, info.ip))
 
 class WebEnginePage(QWebEnginePage):
     def javaScriptConsoleMessage(self, level, message, lineNumber, sourceID):
         global window
+        global client
+
         print(message)
         if message == 'load':
             #window.run_js(window.browser, "add_message('admin', 'hello world')")
             window.load_page = True
             set_user_info()
+        else:
+            message_json = json.loads(str(message))
+            client.send(message_json['message'])
 
 
 class MainWindow(QMainWindow):
@@ -49,11 +60,11 @@ class MainWindow(QMainWindow):
         view.page().scripts().insert(script)
 
     def run_js(self, view, function=''):
-        #SCRIPT = """
-        #(function(){%s})()
-        #""" % (function)
-
         view.page().runJavaScript(function)
+
+    def append_message(self, message):
+        print(1)
+        self.run_js(self.browser, "add_message('%s', '%s')" % ('loh', message))
 
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
@@ -102,7 +113,8 @@ os.environ[
 
 os.environ[
         "QTWEBENGINE_REMOTE_DEBUGGING"
-    ] = "8080"
+    ] = "9090"
+
 
 app = QApplication(sys.argv)
 
@@ -110,5 +122,9 @@ app.setApplicationName("100LAR-WEB")
 app.setOrganizationName("100LAR STUDIO")
 
 window = MainWindow()
+
+client = client()
+#client.connect(info.ip, ["192.168.1.119", 8080])
+#client.send("hello")
 
 sys.exit(app.exec_())

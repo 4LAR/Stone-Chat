@@ -89,7 +89,11 @@
     }
 
     function send_message(text) {
-      console.log(`{message: "${text}"}`);
+      message = {
+        message: text
+      }
+      //console.log(`{message: "${text}"}`);
+      console.log(JSON.stringify(message));
     }
 
     function add_message(name, text, data="4:20 20.4.2022") {
@@ -126,10 +130,10 @@
     }
 
     // для тестов
-    for (let i=0; i < 20; i++) {
-      add_server("Test server " + i, "192.168.1.1")
-      add_message("100LAR", "Hello world");
-    }
+    //for (let i=0; i < 20; i++) {
+    //  add_server("Test server " + i, "192.168.1.1")
+    //  add_message("100LAR", "Hello world");
+    //}
 
     var dark_mode = true;
     //switch_theme();

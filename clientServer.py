@@ -80,7 +80,7 @@ def decode_key(message, key):
 		if decrypt_ascii[:8] == "<ASCII+>":
 			decrypt = decrypt_ascii[8:]
 	return decrypt
-	
+
 def code(msg):
 	if enc_type == "0":
 		return msg
@@ -95,7 +95,7 @@ def decode(msg):
 		return msg
 	else:
 		return decode_key(msg,key)
-    
+
 def clrscr():
 	if "1" in os_type:
 		os.system("clear")
@@ -110,7 +110,7 @@ def receving (name, sock):
 				time.sleep(0.2)
 		except:
 			pass
-			
+
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
@@ -121,13 +121,13 @@ def get_ip():
     finally:
         s.close()
     return ip
-			
+
 #host = socket.gethostbyname(socket.gethostname())
-host = get_ip() 
+host = get_ip()
 port = 0
 
 log = True
-    
+
 s = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 s.bind((host,port))
 s.setblocking(0)
@@ -183,7 +183,7 @@ while shutdown == False:
 			else:
 				if message != "":
 					s.sendto(("["+alias + "] :: "+code(message)).encode("utf-8"),server)
-				
+
 				time.sleep(0.2)
 		except:
 			if log:
@@ -191,4 +191,3 @@ while shutdown == False:
 
 rT.join()
 s.close()
-
