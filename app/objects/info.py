@@ -1,4 +1,3 @@
-import socket
 
 class client_info():
     def __init__(self):

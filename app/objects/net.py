@@ -1,23 +1,3 @@
-import socket
-import threading
-import time
-import os
-
-global connected
-
-'''
-class receving_thread(threading.Thread):
-    def __init__(self, client):
-        super(receving_thread, self).__init__(client)
-        Thread.__init__(self)
-
-    def run(self):
-        while self.connected:
-            try:
-                pass
-            except Exception as e:
-                print("[ ERROR ] RECEVE: ", e)
-'''
 
 messages = []
 
@@ -32,11 +12,15 @@ def receving_thread_func(name, sock):
         try:
             while True:
                 data, addr = sock.recvfrom(1024)
-                print(1)
                 messages.append(data.decode("utf-8"))
+                print(data.decode("utf-8"))
                 time.sleep(0.2)
 
-                window.append_message(data.decode("utf-8"))
+                try:
+                    window.append_message(data.decode("utf-8"))
+
+                except Exception as x:
+                    print(x)
 
         except Exception as e:
             pass
