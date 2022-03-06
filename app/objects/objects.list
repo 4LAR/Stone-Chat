@@ -1,4 +1,6 @@
 info.py
 gui.py
 net.py
+server_list.py
+settings.py
 main.py
