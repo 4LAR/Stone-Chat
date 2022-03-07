@@ -19,6 +19,7 @@ import time
 code = ''
 files = []
 
+# fuck import
 # получаем названия файлов с нужными объктами
 file_objects = (open('objects/objects.list', 'r', encoding="utf-8").read()).split('\n') #
 for i in range(len(file_objects)-1): #

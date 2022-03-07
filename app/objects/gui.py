@@ -56,6 +56,7 @@ class MainWindow(QMainWindow):
         self.load_page = False
 
         self.setGeometry(100, 100, 1280, 720)
+        self.setMinimumSize(640, 480)
         #self.setFixedSize(self.width(), self.height())
 
         self.browser = QWebEngineView(self)
@@ -76,15 +77,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("%s" % title)
 
     def resizeEvent(self, event):
-        pass
-
-        #self.browser.setZoomFactor(self.width() / (1920 + 55))
         self.browser.setFixedSize(self.width(), self.height())
-
-        #self.browser_gui.setZoomFactor(self.width() / 1920)
-        #self.browser_gui.setFixedSize(self.width(), self.height())
-
-        #self.browser.move((self.width() / 1920) * 55, (self.width() / 1920) * 57)
 
     def closeEvent(self,event):
         global client

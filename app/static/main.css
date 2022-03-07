@@ -221,6 +221,19 @@ textarea:focus, input:focus{
 
 }
 
+.add_server {
+  position: fixed;
+
+  top: 55px;
+  left: 200px;
+
+  background-color: #323236;
+
+  width: 1080px;
+  height: 665px;
+
+}
+
 /*  */
 .top_bar_container {
   background-color: #39393C;

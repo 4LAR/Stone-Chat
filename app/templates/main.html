@@ -52,8 +52,6 @@
       </div>
     </div>
 
-    <!--add channel-->
-
     <!--user-->
     <div class="user_container">
       <image class="icon" width="50" height="50" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIFNWRyBFZGl0b3IgLSBodHRwOi8vZ2l0aHViLmNvbS9temFsaXZlL1NWRyBFZGl0b3IvIC0tPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBoZWlnaHQ9IjM1MiIgd2lkdGg9IjM1MiIgeT0iLTEiIHg9Ii0xIiBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiLz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8cmVjdCByeD0iMTciIGhlaWdodD0iMzAwIiB3aWR0aD0iMzAwIiB5PSIyMyIgeD0iMjgiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZT0iIzAwMCIgZmlsbD0ibm9uZSIgaWQ9InN2Z18yIi8+CiAgPHBhdGggZD0ibTIyOS43MzUwMDEsMTU5LjMzMDAwMmMwLDAgOC45NTE5OTYsLTM2LjgwMjAwMiAwLC00OS4yNjkwMDVjLTguOTYyOTk3LC0xMi40NjY3OTcgLTEyLjUzNzk5NCwtMjAuNzcwOTk2IC0zMi4yNDYwMDIsLTI2LjcxNTk5NnMtMTIuNTI2OTkzLC00Ljc2MDMgLTI2Ljg1Njk5NSwtNC4xNTIxYy0xNC4zMzAwMDIsMC41OTc1OTUgLTI2LjI3NzAwOCw4LjMwNDE5OSAtMjYuMjc3MDA4LDEyLjQ1NjI5OWMwLDAgLTguOTUxOTk2LDAuNTk3NjAzIC0xMi41MjU5ODYsNC4xNjI1OThjLTMuNTg2MDE0LDMuNTY0OTAzIC05LjU1NDAwOCwyMC4xNzMyMDMgLTkuNTU0MDA4LDI0LjMzNjIwNXMyLjk4NDAwMSwzMi4wNjI5OTYgNS45Njc5OTUsMzcuOTk3OTkzbC0zLjU1Mjk5NCwxLjE4NDAwNmMtMi45ODQwMDEsMzQuNDIzMDA0IDExLjkzNjAwNSwzOC41ODU5OTkgMTEuOTM2MDA1LDM4LjU4NTk5OWM1LjM2Nzk5NiwzMi4wNjMwMDQgMTAuNzQ0OTk1LDE4LjQxMDk5NSAxMC43NDQ5OTUsMjYuNzE2MDAzcy01LjM3Njk5OSw1LjM0NyAtNS4zNzY5OTksNS4zNDdzLTQuNzY2OTk4LDEzLjA1NDAwMSAtMTYuNzAzMDAzLDE3LjgwNDAwMWMtMTEuOTM1OTk3LDQuNzM4OTk4IC03OC4xOTgyLDMwLjI1OTk5NSAtODMuNTg2NTAyLDM1LjYwNzAxYy01LjM4ODE5OSw1LjM1Nzk3MSAtNC43NzY2LDMwLjI4MDk3NSAtNC43NzY2LDMwLjI4MDk3NWwyODQuMTQzMTE2LDBjMCwwIDAuNjIxOTc5LC0yNC45MjMwMDQgLTQuNzY2MDIyLC0zMC4yODA5NzVjLTUuMzk4OTg3LC01LjM1ODAwMiAtNzEuNjYwOTk1LC0zMC44NjgwMTEgLTgzLjU5NywtMzUuNjA3MDFjLTExLjkzNTk4OSwtNC43NSAtMTYuNzAxOTk2LC0xNy44MDQwMDEgLTE2LjcwMTk5NiwtMTcuODA0MDAxcy01LjM3Nzk5MSwyLjk1NzAwMSAtNS4zNzc5OTEsLTUuMzQ3czUuMzc3OTkxLDUuMzQ3IDEwLjc1NDk5LC0yNi43MTYwMDNjMCwwIDE0LjkxMDAwNCwtNC4xNjI5OTQgMTEuOTM3MDEyLC0zOC41ODU5OTlsLTMuNTg1MDA3LDB6IiBzdHJva2Utd2lkdGg9IjExIiBzdHJva2Utb3BhY2l0eT0ibnVsbCIgc3Ryb2tlPSIjMDAwIiBmaWxsPSIjMDAwMDAwIiBpZD0ic3ZnXzEiLz4KIDwvZz4KPC9zdmc+" />
@@ -68,16 +66,30 @@
     </div>
     <div class="vl_width" style="position: fixed; left: 0px; bottom: 54px; width: 203px;"></div>
 
-    <div class="add_server_container">
+    <div class="add_server">
 
     </div>
 
   </body>
   <script type="text/javascript">
-    window.addEventListener('resize', function(event) {
-      var scale_x = (window.innerWidth / 1280) // window.screen.width
-      document.querySelector('.message_input_container').style.width = (800 * scale_x) + "px";
-    }, true);
+    var min_size_x = 640;
+    var min_size_y = 480;
+
+    function resize() {
+      var scale_x = (window.innerWidth - 1280) // window.screen.width
+      var scale_y = (window.innerHeight - 720)
+
+      document.querySelector('.message_input_container').style.width = (800 + scale_x) + "px";
+      document.querySelector('.servers_list_container').style.height = (610 + scale_y) + "px";
+
+      document.querySelector('.messages_list_class').style.width = (1080 + scale_x) + "px";
+      document.querySelector('.messages_list_class').style.height = (610 + scale_y) + "px";
+
+      document.querySelector('.add_server').style.width = (1080 + scale_x) + "px";
+      document.querySelector('.add_server').style.height = (665 + scale_y) + "px";
+
+    }
+    window.addEventListener('resize', function(event) { resize(); }, true);
 
     function set_user_info(name, ip) {
       document.getElementById("user_name").innerHTML = name;
@@ -160,6 +172,8 @@
         dark_mode = true;
       }
     }
+
+    resize();
 
     console.log(`load`);
   </script>
