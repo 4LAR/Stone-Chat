@@ -12,7 +12,7 @@
 
     <!--channel info-->
     <div class="top_bar_container">
-      <h1 align="center">< CHAT NAME ></h1>
+      <h1 id="chat_name" align="center">< CHAT NAME ></h1>
     </div>
 
     <!--messages list-->
@@ -41,13 +41,18 @@
         <div style="direction: ltr;">
           <ul id="server_list">
             <li>
-
+              <div class="add_channel_container">
+                <image style="margin: 5px 3px" class="icon" width="30" height="30" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIFNWRyBFZGl0b3IgLSBodHRwOi8vZ2l0aHViLmNvbS9temFsaXZlL1NWRyBFZGl0b3IvIC0tPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBoZWlnaHQ9IjM1MiIgd2lkdGg9IjM1MiIgeT0iLTEiIHg9Ii0xIiBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiLz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8cGF0aCBmaWxsPSIjZmZmIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjUiIGlkPSJzdmdfMSIvPgogIDxwYXRoIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9IjAuNSIgaWQ9InN2Z18zIi8+CiAgPHBhdGggZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIgb3BhY2l0eT0iMC41IiBpZD0ic3ZnXzUiLz4KICA8cGF0aCBmaWxsPSIjMDAwMDAwIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjUiIGlkPSJzdmdfNiIvPgogIDxwYXRoIHN0cm9rZT0iIzAwMCIgaWQ9InN2Z18yIiBkPSJtNy40OTk5ODUsMTE4LjIxNDE1bDExMC43MTQxNTQsMGwwLC0xMTAuNzE0MTY1bDExMy41NzE3MDYsMGwwLDExMC43MTQxNjVsMTEwLjcxNDE2NSwwbDAsMTEzLjU3MTcxN2wtMTEwLjcxNDE2NSwwbDAsMTEwLjcxNDE1NGwtMTEzLjU3MTcwNiwwbDAsLTExMC43MTQxNTRsLTExMC43MTQxNTQsMGwwLC0xMTMuNTcxNzE3eiIgZmlsbC1vcGFjaXR5PSJudWxsIiBzdHJva2Utb3BhY2l0eT0ibnVsbCIgc3Ryb2tlLXdpZHRoPSIwIiBmaWxsPSIjMDAwMDAwIi8+CiA8L2c+Cjwvc3ZnPg==">
+                <h2 style="margin: -30px 50px; white-space: nowrap;">Add server</h2>
+              </div>
+              <br>
             </li>
-
           </ul>
         </div>
       </div>
     </div>
+
+    <!--add channel-->
 
     <!--user-->
     <div class="user_container">
@@ -61,10 +66,18 @@
       <image style="position: absolute; bottom: 7px; left: 5px" class="icon" width="30" height="30" src="data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMjIuNjgzIDkuMzk0LTEuODgtLjIzOWMtLjE1NS0uNDc3LS4zNDYtLjkzNy0uNTY5LTEuMzc0bDEuMTYxLTEuNDk1Yy40Ny0uNjA1LjQxNS0xLjQ1OS0uMTIyLTEuOTc5bC0xLjU3NS0xLjU3NWMtLjUyNS0uNTQyLTEuMzc5LS41OTYtMS45ODUtLjEyN2wtMS40OTMgMS4xNjFjLS40MzctLjIyMy0uODk3LS40MTQtMS4zNzUtLjU2OWwtLjIzOS0xLjg3N2MtLjA5LS43NTMtLjcyOS0xLjMyLTEuNDg2LTEuMzJoLTIuMjRjLS43NTcgMC0xLjM5Ni41NjctMS40ODYgMS4zMTdsLS4yMzkgMS44OGMtLjQ3OC4xNTUtLjkzOC4zNDUtMS4zNzUuNTY5bC0xLjQ5NC0xLjE2MWMtLjYwNC0uNDY5LTEuNDU4LS40MTUtMS45NzkuMTIybC0xLjU3NSAxLjU3NGMtLjU0Mi41MjYtLjU5NyAxLjM4LS4xMjcgMS45ODZsMS4xNjEgMS40OTRjLS4yMjQuNDM3LS40MTQuODk3LS41NjkgMS4zNzRsLTEuODc3LjIzOWMtLjc1My4wOS0xLjMyLjcyOS0xLjMyIDEuNDg2djIuMjRjMCAuNzU3LjU2NyAxLjM5NiAxLjMxNyAxLjQ4NmwxLjg4LjIzOWMuMTU1LjQ3Ny4zNDYuOTM3LjU2OSAxLjM3NGwtMS4xNjEgMS40OTVjLS40Ny42MDUtLjQxNSAxLjQ1OS4xMjIgMS45NzlsMS41NzUgMS41NzVjLjUyNi41NDEgMS4zNzkuNTk1IDEuOTg1LjEyNmwxLjQ5NC0xLjE2MWMuNDM3LjIyNC44OTcuNDE1IDEuMzc0LjU2OWwuMjM5IDEuODc2Yy4wOS43NTUuNzI5IDEuMzIyIDEuNDg2IDEuMzIyaDIuMjRjLjc1NyAwIDEuMzk2LS41NjcgMS40ODYtMS4zMTdsLjIzOS0xLjg4Yy40NzctLjE1NS45MzctLjM0NiAxLjM3NC0uNTY5bDEuNDk1IDEuMTYxYy42MDUuNDcgMS40NTkuNDE1IDEuOTc5LS4xMjJsMS41NzUtMS41NzVjLjU0Mi0uNTI2LjU5Ny0xLjM3OS4xMjctMS45ODVsLTEuMTYxLTEuNDk0Yy4yMjQtLjQzNy40MTUtLjg5Ny41NjktMS4zNzRsMS44NzYtLjIzOWMuNzUzLS4wOSAxLjMyLS43MjkgMS4zMi0xLjQ4NnYtMi4yNGMuMDAxLS43NTctLjU2Ni0xLjM5Ni0xLjMxNi0xLjQ4NnptLTEwLjY4MyA3LjYwNmMtMi43NTcgMC01LTIuMjQzLTUtNXMyLjI0My01IDUtNSA1IDIuMjQzIDUgNS0yLjI0MyA1LTUgNXoiLz48L3N2Zz4=" />
       <!--<h1 style="margin: 12px 55px">SETTINGS</h1>-->
     </div>
-    <div class="vl_width" style="position: fixed; left: 0px; top: 664px; width: 203px;"></div>
+    <div class="vl_width" style="position: fixed; left: 0px; bottom: 54px; width: 203px;"></div>
+
+    <div class="add_server_container">
+
+    </div>
 
   </body>
   <script type="text/javascript">
+    window.addEventListener('resize', function(event) {
+      var scale_x = (window.innerWidth / 1280) // window.screen.width
+      document.querySelector('.message_input_container').style.width = (800 * scale_x) + "px";
+    }, true);
 
     function set_user_info(name, ip) {
       document.getElementById("user_name").innerHTML = name;
@@ -130,10 +143,10 @@
     }
 
     // для тестов
-    //for (let i=0; i < 20; i++) {
-    //  add_server("Test server " + i, "192.168.1.1")
-    //  add_message("100LAR", "Hello world");
-    //}
+    for (let i=0; i < 20; i++) {
+      add_server("Test server " + i, "192.168.1.1")
+      add_message("100LAR", "Hello world");
+    }
 
     var dark_mode = true;
     //switch_theme();

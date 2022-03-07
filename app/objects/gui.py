@@ -48,7 +48,6 @@ class MainWindow(QMainWindow):
         view.page().runJavaScript(function)
 
     def append_message(self, message):
-        print(1)
         self.run_js(self.browser, "add_message('%s', '%s')" % ('loh', message))
 
     def __init__(self, *args, **kwargs):
@@ -57,7 +56,7 @@ class MainWindow(QMainWindow):
         self.load_page = False
 
         self.setGeometry(100, 100, 1280, 720)
-        self.setFixedSize(self.width(), self.height())
+        #self.setFixedSize(self.width(), self.height())
 
         self.browser = QWebEngineView(self)
         self.browser.setFixedSize(self.width(), self.height())
@@ -67,10 +66,6 @@ class MainWindow(QMainWindow):
         self.loadCSS(self.browser, "static/main.css", "script1")
 
         self.browser.loadFinished.connect(self.update_title)
-        #self.browser.move(200, 300)
-
-        #self.run_js(self.browser, "add_message('admin', 'hello world')")
-
 
         self.show()
 
@@ -82,14 +77,14 @@ class MainWindow(QMainWindow):
 
     def resizeEvent(self, event):
         pass
-        '''
-        self.browser.setZoomFactor(self.width() / (1920 + 55))
-        self.browser.setFixedSize(self.width() - ((self.width() / 1920) * 55), self.height() - ((self.width() / 1920) * 55))
 
-        self.browser_gui.setZoomFactor(self.width() / 1920)
-        self.browser_gui.setFixedSize(self.width(), self.height())
+        #self.browser.setZoomFactor(self.width() / (1920 + 55))
+        self.browser.setFixedSize(self.width(), self.height())
 
-        self.browser.move((self.width() / 1920) * 55, (self.width() / 1920) * 57)'''
+        #self.browser_gui.setZoomFactor(self.width() / 1920)
+        #self.browser_gui.setFixedSize(self.width(), self.height())
+
+        #self.browser.move((self.width() / 1920) * 55, (self.width() / 1920) * 57)
 
     def closeEvent(self,event):
         global client

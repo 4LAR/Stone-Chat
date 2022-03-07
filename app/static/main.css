@@ -106,14 +106,14 @@ textarea:focus, input:focus{
 
 .vl_width {
   border-top: 2px solid #808080;
-  position: absolute;
+  position: fixed;
   margin-left: -3px;
-  top: 0;
+  --top: 0;
 }
 
 /* messages */
 .message_input_container {
-  position: fixed;
+  position: absolute;
   bottom: 1px;
   left: 300px;
   color: #808080;
@@ -201,6 +201,22 @@ textarea:focus, input:focus{
 }
 
 .server_container:hover {
+  background-color: #3B3B3F;
+
+}
+
+.add_channel_container {
+  position: relative;
+
+  width: 200px;
+  height: 40px;
+
+  background-color: #39393C;
+  transition:0.2s all;
+  cursor: pointer;
+}
+
+.add_channel_container:hover {
   background-color: #3B3B3F;
 
 }
