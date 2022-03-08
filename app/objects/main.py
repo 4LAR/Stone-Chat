@@ -1,5 +1,7 @@
 app = QApplication(sys.argv)
 
+info = client_info()
+
 app.setApplicationName("100LAR-WEB")
 app.setOrganizationName("100LAR STUDIO")
 

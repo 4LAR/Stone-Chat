@@ -1,4 +1,3 @@
-info = client_info()
 
 def set_user_info():
     window.run_js(window.browser, "set_user_info('%s', '%s')" % (info.name, info.ip))
@@ -10,9 +9,10 @@ class WebEnginePage(QWebEnginePage):
 
         print(message)
         if message == 'load':
-            #window.run_js(window.browser, "add_message('admin', 'hello world')")
             window.load_page = True
             set_user_info()
+            window.run_js(window.browser, "chat_go_down()")
+
         else:
             message_json = json.loads(str(message))
             client.send(message_json['message'])
@@ -47,8 +47,8 @@ class MainWindow(QMainWindow):
     def run_js(self, view, function=''):
         view.page().runJavaScript(function)
 
-    def append_message(self, message):
-        self.run_js(self.browser, "add_message('%s', '%s')" % ('loh', message))
+    def append_message(self, name, message):
+        self.run_js(self.browser, "add_message('%s', '%s')" % (name, message))
 
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
@@ -64,7 +64,8 @@ class MainWindow(QMainWindow):
         self.browser.setUrl(QUrl("chrome://gpu/"))
         self.browser.setPage(WebEnginePage(self.browser))
         self.browser.setHtml(open('templates/main.html', 'r').read())
-        self.loadCSS(self.browser, "static/main.css", "script1")
+        self.loadCSS(self.browser, "static/main.css", "main_style")
+        self.loadCSS(self.browser, "static/slider.css", "slider_style")
 
         self.browser.loadFinished.connect(self.update_title)
 

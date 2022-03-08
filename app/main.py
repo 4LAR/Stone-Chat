@@ -8,6 +8,8 @@ from PyQt5.QtPrintSupport import *
 import os
 from os import path
 
+import uuid
+
 import sys
 
 import json

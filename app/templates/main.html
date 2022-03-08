@@ -61,19 +61,52 @@
     <div class="vl_width" style="left: 0px; top: 54px; width: 203px;"></div>
 
     <div class="settings_container">
-      <image style="position: absolute; bottom: 7px; left: 5px" class="icon" width="30" height="30" src="data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMjIuNjgzIDkuMzk0LTEuODgtLjIzOWMtLjE1NS0uNDc3LS4zNDYtLjkzNy0uNTY5LTEuMzc0bDEuMTYxLTEuNDk1Yy40Ny0uNjA1LjQxNS0xLjQ1OS0uMTIyLTEuOTc5bC0xLjU3NS0xLjU3NWMtLjUyNS0uNTQyLTEuMzc5LS41OTYtMS45ODUtLjEyN2wtMS40OTMgMS4xNjFjLS40MzctLjIyMy0uODk3LS40MTQtMS4zNzUtLjU2OWwtLjIzOS0xLjg3N2MtLjA5LS43NTMtLjcyOS0xLjMyLTEuNDg2LTEuMzJoLTIuMjRjLS43NTcgMC0xLjM5Ni41NjctMS40ODYgMS4zMTdsLS4yMzkgMS44OGMtLjQ3OC4xNTUtLjkzOC4zNDUtMS4zNzUuNTY5bC0xLjQ5NC0xLjE2MWMtLjYwNC0uNDY5LTEuNDU4LS40MTUtMS45NzkuMTIybC0xLjU3NSAxLjU3NGMtLjU0Mi41MjYtLjU5NyAxLjM4LS4xMjcgMS45ODZsMS4xNjEgMS40OTRjLS4yMjQuNDM3LS40MTQuODk3LS41NjkgMS4zNzRsLTEuODc3LjIzOWMtLjc1My4wOS0xLjMyLjcyOS0xLjMyIDEuNDg2djIuMjRjMCAuNzU3LjU2NyAxLjM5NiAxLjMxNyAxLjQ4NmwxLjg4LjIzOWMuMTU1LjQ3Ny4zNDYuOTM3LjU2OSAxLjM3NGwtMS4xNjEgMS40OTVjLS40Ny42MDUtLjQxNSAxLjQ1OS4xMjIgMS45NzlsMS41NzUgMS41NzVjLjUyNi41NDEgMS4zNzkuNTk1IDEuOTg1LjEyNmwxLjQ5NC0xLjE2MWMuNDM3LjIyNC44OTcuNDE1IDEuMzc0LjU2OWwuMjM5IDEuODc2Yy4wOS43NTUuNzI5IDEuMzIyIDEuNDg2IDEuMzIyaDIuMjRjLjc1NyAwIDEuMzk2LS41NjcgMS40ODYtMS4zMTdsLjIzOS0xLjg4Yy40NzctLjE1NS45MzctLjM0NiAxLjM3NC0uNTY5bDEuNDk1IDEuMTYxYy42MDUuNDcgMS40NTkuNDE1IDEuOTc5LS4xMjJsMS41NzUtMS41NzVjLjU0Mi0uNTI2LjU5Ny0xLjM3OS4xMjctMS45ODVsLTEuMTYxLTEuNDk0Yy4yMjQtLjQzNy40MTUtLjg5Ny41NjktMS4zNzRsMS44NzYtLjIzOWMuNzUzLS4wOSAxLjMyLS43MjkgMS4zMi0xLjQ4NnYtMi4yNGMuMDAxLS43NTctLjU2Ni0xLjM5Ni0xLjMxNi0xLjQ4NnptLTEwLjY4MyA3LjYwNmMtMi43NTcgMC01LTIuMjQzLTUtNXMyLjI0My01IDUtNSA1IDIuMjQzIDUgNS0yLjI0MyA1LTUgNXoiLz48L3N2Zz4=" />
+      <image onclick="open_settings()" style="position: absolute; bottom: 7px; left: 5px" class="icon" width="30" height="30" src="data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyNCAyNCIgaGVpZ2h0PSI1MTIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMjIuNjgzIDkuMzk0LTEuODgtLjIzOWMtLjE1NS0uNDc3LS4zNDYtLjkzNy0uNTY5LTEuMzc0bDEuMTYxLTEuNDk1Yy40Ny0uNjA1LjQxNS0xLjQ1OS0uMTIyLTEuOTc5bC0xLjU3NS0xLjU3NWMtLjUyNS0uNTQyLTEuMzc5LS41OTYtMS45ODUtLjEyN2wtMS40OTMgMS4xNjFjLS40MzctLjIyMy0uODk3LS40MTQtMS4zNzUtLjU2OWwtLjIzOS0xLjg3N2MtLjA5LS43NTMtLjcyOS0xLjMyLTEuNDg2LTEuMzJoLTIuMjRjLS43NTcgMC0xLjM5Ni41NjctMS40ODYgMS4zMTdsLS4yMzkgMS44OGMtLjQ3OC4xNTUtLjkzOC4zNDUtMS4zNzUuNTY5bC0xLjQ5NC0xLjE2MWMtLjYwNC0uNDY5LTEuNDU4LS40MTUtMS45NzkuMTIybC0xLjU3NSAxLjU3NGMtLjU0Mi41MjYtLjU5NyAxLjM4LS4xMjcgMS45ODZsMS4xNjEgMS40OTRjLS4yMjQuNDM3LS40MTQuODk3LS41NjkgMS4zNzRsLTEuODc3LjIzOWMtLjc1My4wOS0xLjMyLjcyOS0xLjMyIDEuNDg2djIuMjRjMCAuNzU3LjU2NyAxLjM5NiAxLjMxNyAxLjQ4NmwxLjg4LjIzOWMuMTU1LjQ3Ny4zNDYuOTM3LjU2OSAxLjM3NGwtMS4xNjEgMS40OTVjLS40Ny42MDUtLjQxNSAxLjQ1OS4xMjIgMS45NzlsMS41NzUgMS41NzVjLjUyNi41NDEgMS4zNzkuNTk1IDEuOTg1LjEyNmwxLjQ5NC0xLjE2MWMuNDM3LjIyNC44OTcuNDE1IDEuMzc0LjU2OWwuMjM5IDEuODc2Yy4wOS43NTUuNzI5IDEuMzIyIDEuNDg2IDEuMzIyaDIuMjRjLjc1NyAwIDEuMzk2LS41NjcgMS40ODYtMS4zMTdsLjIzOS0xLjg4Yy40NzctLjE1NS45MzctLjM0NiAxLjM3NC0uNTY5bDEuNDk1IDEuMTYxYy42MDUuNDcgMS40NTkuNDE1IDEuOTc5LS4xMjJsMS41NzUtMS41NzVjLjU0Mi0uNTI2LjU5Ny0xLjM3OS4xMjctMS45ODVsLTEuMTYxLTEuNDk0Yy4yMjQtLjQzNy40MTUtLjg5Ny41NjktMS4zNzRsMS44NzYtLjIzOWMuNzUzLS4wOSAxLjMyLS43MjkgMS4zMi0xLjQ4NnYtMi4yNGMuMDAxLS43NTctLjU2Ni0xLjM5Ni0xLjMxNi0xLjQ4NnptLTEwLjY4MyA3LjYwNmMtMi43NTcgMC01LTIuMjQzLTUtNXMyLjI0My01IDUtNSA1IDIuMjQzIDUgNS0yLjI0MyA1LTUgNXoiLz48L3N2Zz4=" />
       <!--<h1 style="margin: 12px 55px">SETTINGS</h1>-->
     </div>
     <div class="vl_width" style="position: fixed; left: 0px; bottom: 54px; width: 203px;"></div>
 
-    <div class="add_server">
+    <div class="settings_background">
+      <!--<h1 align="center">Settings</h1>-->
+
+      <div class="settings_list">
+          <div class="settings_profile">
+            <div class="settings_profile_information" style="left: 40px; top: 15px;">
+              <h2 style="margin: 5px 5px;">Name: None</h2>
+            </div>
+            <div class="settings_profile_information" style="left: 40px; top: 50px;">
+              <h2 style="margin: 5px 5px;">User: None</h2>
+            </div>
+            <div class="settings_profile_information" style="left: 40px; top: 85px;">
+              <h2 style="margin: 5px 5px;">IP: None</h2>
+            </div>
+            <div class="settings_profile_information" style="left: 40px; top: 120px;">
+              <h2 style="margin: 5px 5px;">MAC: None</h2>
+            </div>
+          </div>
+          
+      </div>
+
+      <div class="settings_exit_button" onclick="close_settings()">
+        <image onclick="check_message()" style="position: absolute; margin: 2px 2px" class="icon" width="35" height="35" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIFNWRyBFZGl0b3IgLSBodHRwOi8vZ2l0aHViLmNvbS9temFsaXZlL1NWRyBFZGl0b3IvIC0tPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBoZWlnaHQ9IjM1MiIgd2lkdGg9IjM1MiIgeT0iLTEiIHg9Ii0xIiBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiLz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8cGF0aCBpZD0ic3ZnXzIiIGQ9Im0zMjQuNDk5OTk0LDI3My43NDI0OTRsLTk4LjczMzUyMywtOTguNzMzNTIzbDk4LjcxNTU3OCwtOTguNzMzNTIzbC01MC43NDg1MjgsLTUwLjc4NDQxOWwtOTguNzMzNTIzLDk4LjczMzUyM2wtOTguNzMzNTIzLC05OC43MzM1MjNsLTUwLjc0ODUyOCw1MC43ODQ0MTlsOTguNzE1NTc4LDk4LjczMzUyM2wtOTguNzMzNTIzLDk4LjczMzUyM2w1MC43ODQ0MTksNTAuNzY2NDczbDk4LjcxNTU3OCwtOTguNzMzNTIzbDk4LjcxNTU3OCw5OC43MzM1MjMiIHN0cm9rZS1vcGFjaXR5PSJudWxsIiBzdHJva2Utd2lkdGg9IjAiIHN0cm9rZT0iIzAwMCIgZmlsbD0iIzAwMDAwMCIvPgogPC9nPgo8L3N2Zz4=" />
+        <h2 style="margin: 10px 50px">EXIT</h2>
+      </div>
 
     </div>
 
   </body>
   <script type="text/javascript">
+
+  document.addEventListener('keydown', function(event){
+    if(event.key === "Escape"){
+      close_settings();
+    }
+  });
+
     var min_size_x = 640;
     var min_size_y = 480;
+
+    var settings_bool = false;
 
     function resize() {
       var scale_x = (window.innerWidth - 1280) // window.screen.width
@@ -85,8 +118,15 @@
       document.querySelector('.messages_list_class').style.width = (1080 + scale_x) + "px";
       document.querySelector('.messages_list_class').style.height = (610 + scale_y) + "px";
 
-      document.querySelector('.add_server').style.width = (1080 + scale_x) + "px";
-      document.querySelector('.add_server').style.height = (665 + scale_y) + "px";
+      document.querySelector('.settings_background').style.width = (1080 + scale_x) + "px";
+      document.querySelector('.settings_background').style.height = (665 + scale_y) + "px";
+
+      document.querySelector('.settings_background').style.left = ((settings_bool? 200: (1280 + scale_x)) + "px");
+
+      document.querySelector('.settings_list').style.width = (1080 + scale_x) + "px";
+      document.querySelector('.settings_list').style.height = (665 + scale_y) + "px";
+
+      chat_go_down();
 
     }
     window.addEventListener('resize', function(event) { resize(); }, true);
@@ -108,7 +148,7 @@
     function check_message() {
       var text = document.getElementById("message_input").value
       if (text.length > 0) {
-        send_message(text)
+        send_message(text);
         document.getElementById("message_input").value = "";
       }
     }
@@ -117,7 +157,6 @@
       message = {
         message: text
       }
-      //console.log(`{message: "${text}"}`);
       console.log(JSON.stringify(message));
     }
 
@@ -136,6 +175,14 @@
 
     	li.setAttribute("id", "element4");
     	ul.appendChild(li);
+
+      chat_go_down();
+
+    }
+
+    function chat_go_down() {
+      var block = document.querySelector(".messages_list_class");
+      block.scrollTop = block.scrollHeight;
     }
 
     function add_server(name, ip) {
@@ -152,6 +199,37 @@
 
       li.setAttribute("id", "element4");
     	ul.appendChild(li);
+    }
+
+
+    function open_settings() {
+      settings_bool = true;
+      document.querySelector('.settings_background').style.transition = "0.2s all";
+      resize();
+      //document.querySelector('.settings_background').style.transition = "0s all";
+    }
+
+    function close_settings() {
+      settings_bool = false;
+      document.querySelector('.settings_background').style.transition = "0.2s all";
+      resize();
+      //document.querySelector('.settings_background').style.transition = "0s all";
+    }
+
+    document.querySelector('.settings_background').addEventListener('transitionend', function() {
+       document.querySelector('.settings_background').style.transition = "0s all";
+    });
+
+
+    function show_settings() {
+      if (settings_bool) {
+
+        settings_bool = false;
+      } else {
+
+        settings_bool = true;
+      }
+
     }
 
     // для тестов

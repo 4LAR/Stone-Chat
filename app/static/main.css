@@ -1,4 +1,5 @@
 
+
 /* theme */
 .light {
   filter: invert(100%) hue-rotate(180deg);
@@ -43,8 +44,22 @@
   background-color: #808080;
 }
 
+/* settings list */
+.settings_list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.settings_list::-webkit-scrollbar-track {
+  background: #222226;
+}
+
+.settings_list::-webkit-scrollbar-thumb {
+  background-color: #808080;
+}
+
 html {
   scroll-behavior: smooth;
+  user-select: none;
 }
 
 p {
@@ -221,19 +236,6 @@ textarea:focus, input:focus{
 
 }
 
-.add_server {
-  position: fixed;
-
-  top: 55px;
-  left: 200px;
-
-  background-color: #323236;
-
-  width: 1080px;
-  height: 665px;
-
-}
-
 /*  */
 .top_bar_container {
   background-color: #39393C;
@@ -296,13 +298,79 @@ textarea:focus, input:focus{
   width: 200px;
   height: 55px;
 
-  --cursor: pointer;
-
 }
 
 .settings_container_:hover {
   background-color: #313135;
 
+}
+
+.settings_background {
+  position: fixed;
+
+  top: 55px;
+  left: 1280px;
+
+  background-color: #323236;
+
+  width: 1080px;
+  height: 665px;
+
+  transition: 0s all;
+
+}
+
+.settings_exit_button {
+  position: absolute;
+
+  right: 10px;
+  top: 10px;
+
+  width: 120px;
+  height: 40px;
+
+  border-radius: 10px;
+  background-color: #39393C;
+  transition:0.2s all;
+  cursor: pointer;
+
+}
+
+.settings_exit_button:hover {
+  background-color: #3B3B3F;
+
+}
+
+.settings_list {
+  position: absolute;
+  overflow-y: scroll;
+
+  left: 0px;
+  top: 0px;
+  width: 1080px;
+  height: 665px;
+
+}
+
+.settings_list_::-webkit-scrollbar {
+  width: 0;
+}
+
+.settings_profile {
+  width: 735px;
+  height: 250px;
+  left: 10px;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #222226;
+}
+
+.settings_profile_information {
+  width: 310px;
+  height: 30px;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #2C2C2F;
 }
 
 /* icons */
