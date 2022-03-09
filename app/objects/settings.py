@@ -1,7 +1,7 @@
 
 class settings():
     def __init__(self):
-        pass
+        self.name = "loh"
 
     def read_settings(self):
         pass

@@ -72,16 +72,16 @@
       <div class="settings_list">
           <div class="settings_profile">
             <div class="settings_profile_information" style="left: 40px; top: 15px;">
-              <h2 style="margin: 5px 5px;">Name: None</h2>
+              <h2 id="settings_name" style="margin: 5px 5px;">Name: None</h2>
             </div>
             <div class="settings_profile_information" style="left: 40px; top: 50px;">
-              <h2 style="margin: 5px 5px;">User: None</h2>
+              <h2 id="settings_user" style="margin: 5px 5px;">User: None</h2>
             </div>
             <div class="settings_profile_information" style="left: 40px; top: 85px;">
-              <h2 style="margin: 5px 5px;">IP: None</h2>
+              <h2 id="settings_ip" style="margin: 5px 5px;">IP: None</h2>
             </div>
             <div class="settings_profile_information" style="left: 40px; top: 120px;">
-              <h2 style="margin: 5px 5px;">MAC: None</h2>
+              <h2 id="settings_mac" style="margin: 5px 5px;">MAC: None</h2>
             </div>
           </div>
           
@@ -96,11 +96,19 @@
 
   </body>
   <script type="text/javascript">
-
+  
+  var key = -1;
   document.addEventListener('keydown', function(event){
-    if(event.key === "Escape"){
+
+    if(event.keyCode === 27){
       close_settings();
+    } else if (key == 17 && event.keyCode == 73) {
+      open_settings();
+    } else if (key == 17 && event.keyCode == 87) {
+      console.log("exit");
     }
+
+    key = event.keyCode;
   });
 
     var min_size_x = 640;
@@ -131,9 +139,14 @@
     }
     window.addEventListener('resize', function(event) { resize(); }, true);
 
-    function set_user_info(name, ip) {
+    function set_user_info(name, user, ip, mac) {
       document.getElementById("user_name").innerHTML = name;
       document.getElementById("user_ip").innerHTML = "IP: " + ip;
+
+      document.getElementById("settings_name").innerHTML = "NAME: " + name;
+      document.getElementById("settings_user").innerHTML = "USER: " + user;
+      document.getElementById("settings_ip").innerHTML = "IP: " + ip;
+      document.getElementById("settings_mac").innerHTML = "MAC: " + mac;
 
     }
 
@@ -233,10 +246,10 @@
     }
 
     // для тестов
-    for (let i=0; i < 20; i++) {
-      add_server("Test server " + i, "192.168.1.1")
-      add_message("100LAR", "Hello world");
-    }
+    //for (let i=0; i < 20; i++) {
+    //  add_server("Test server " + i, "192.168.1.1")
+    //  add_message("100LAR", "Hello world");
+    //}
 
     var dark_mode = true;
     //switch_theme();

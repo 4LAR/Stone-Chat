@@ -1,6 +1,6 @@
 
 def set_user_info():
-    window.run_js(window.browser, "set_user_info('%s', '%s')" % (info.name, info.ip))
+    window.run_js(window.browser, "set_user_info('%s', '%s', '%s', '%s')" % (settings.name, info.name, info.ip, info.mac))
 
 class WebEnginePage(QWebEnginePage):
     def javaScriptConsoleMessage(self, level, message, lineNumber, sourceID):
@@ -12,6 +12,10 @@ class WebEnginePage(QWebEnginePage):
             window.load_page = True
             set_user_info()
             window.run_js(window.browser, "chat_go_down()")
+
+        elif message == 'exit':
+            window.close()
+
 
         else:
             message_json = json.loads(str(message))

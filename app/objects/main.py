@@ -1,6 +1,7 @@
 app = QApplication(sys.argv)
 
 info = client_info()
+settings = settings()
 
 app.setApplicationName("100LAR-WEB")
 app.setOrganizationName("100LAR STUDIO")
@@ -8,7 +9,7 @@ app.setOrganizationName("100LAR STUDIO")
 window = MainWindow()
 
 client = client()
-client.connect(info.ip, ["192.168.1.119", 8080])
+client.connect(info.ip, ["192.168.43.218", 8080])
 #client.send("hello")
 
 sys.exit(app.exec_())

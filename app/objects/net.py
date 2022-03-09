@@ -16,7 +16,7 @@ def receving_thread_func(name, sock):
                 print(data.decode("utf-8"))
                 time.sleep(0.2)
 
-                window.append_message(data.decode("utf-8"))
+                window.append_message("test", data.decode("utf-8"))
 
         except Exception as e:
             pass
@@ -28,7 +28,7 @@ def send_thread_func(name, sock, server, message):
 
     try:
         sock.sendto((message).encode("utf-8"), server)
-        window.append_message(info.name, message)
+        #window.append_message(info.name, message)
     except Exception as e:
         print("[ ERROR ] SEND: ", e)
 
