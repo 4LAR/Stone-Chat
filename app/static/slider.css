@@ -5,7 +5,7 @@
   height: 34px;
 }
 
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -18,7 +18,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #333336;
+  background-color: #222226;
   -webkit-transition: .4s;
   transition: .4s;
 }

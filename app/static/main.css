@@ -22,6 +22,7 @@
 /* messages */
 .messages_list_class::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 .messages_list_class::-webkit-scrollbar-track {
@@ -34,6 +35,7 @@
 /* server list */
 .servers_list_container::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 .servers_list_container::-webkit-scrollbar-track {
@@ -47,6 +49,7 @@
 /* settings list */
 .settings_list::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 .settings_list::-webkit-scrollbar-track {
@@ -309,11 +312,11 @@ textarea:focus, input:focus{
   position: fixed;
 
   top: 55px;
-  left: 1280px;
+  right: 0px;
 
   background-color: #323236;
 
-  width: 1080px;
+  width: 450px;
   height: 665px;
 
   transition: 0s all;
@@ -324,30 +327,31 @@ textarea:focus, input:focus{
   position: absolute;
 
   right: 10px;
-  top: 10px;
+  top: -48px;
 
   width: 120px;
   height: 40px;
 
   border-radius: 10px;
-  background-color: #39393C;
+  background-color: #222226;
   transition:0.2s all;
   cursor: pointer;
 
 }
 
 .settings_exit_button:hover {
-  background-color: #3B3B3F;
+  background-color: #2C2C2F;
 
 }
 
 .settings_list {
   position: absolute;
   overflow-y: scroll;
+  overflow-x: hidden;
 
   left: 0px;
   top: 0px;
-  width: 1080px;
+  width: 450px;
   height: 665px;
 
 }
@@ -357,8 +361,8 @@ textarea:focus, input:focus{
 }
 
 .settings_profile {
-  width: 735px;
-  height: 250px;
+  width: 428px;
+  height: 150px;
   left: 10px;
   position: absolute;
   border-radius: 5px;
@@ -371,6 +375,11 @@ textarea:focus, input:focus{
   position: absolute;
   border-radius: 5px;
   background-color: #2C2C2F;
+}
+
+.settings_parametr {
+  left: 10px;
+  position: relative;
 }
 
 /* icons */
