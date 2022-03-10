@@ -382,6 +382,19 @@ textarea:focus, input:focus{
   position: relative;
 }
 
+.settings_server_input {
+  position: absolute;
+  left: 10px;
+  color: #808080;
+  border: 0;
+  background-color: #222226;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 10px;
+  width: 310px;
+  height: 38px;
+}
+
 /* icons */
 .icon {
   filter: invert(40%);

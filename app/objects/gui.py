@@ -16,10 +16,9 @@ class WebEnginePage(QWebEnginePage):
         elif message == 'exit':
             window.close()
 
-
         else:
-            message_json = json.loads(str(message))
-            client.send(message_json['message'])
+            #message_json = json.loads(str(message))
+            client.send(message)
 
 
 class MainWindow(QMainWindow):
@@ -52,6 +51,7 @@ class MainWindow(QMainWindow):
         view.page().runJavaScript(function)
 
     def append_message(self, name, message):
+
         self.run_js(self.browser, "add_message('%s', '%s')" % (name, message))
 
     def __init__(self, *args, **kwargs):

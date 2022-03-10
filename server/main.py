@@ -37,8 +37,11 @@ while run:
 
         message = data.decode("utf-8")
 
-        for client in clients:
-            s.sendto(message.encode("utf-8"),client)
+        print(message)
+
+        if message != "join":
+            for client in clients:
+                s.sendto(message.encode("utf-8"),client)
 
     except:
         pass

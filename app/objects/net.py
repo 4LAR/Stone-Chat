@@ -15,8 +15,11 @@ def receving_thread_func(name, sock):
                 messages.append(data.decode("utf-8"))
                 print(data.decode("utf-8"))
                 time.sleep(0.2)
-
-                window.append_message("test", data.decode("utf-8"))
+                try:
+                    message_json = json.loads(str(data.decode("utf-8")))
+                    window.append_message(message_json['name'], message_json['message'])
+                except Exception as e:
+                    print(e)
 
         except Exception as e:
             pass
@@ -61,8 +64,7 @@ class client():
         self.thread_receving = threading.Thread(target = receving_thread_func, args = ("receve", self.sock))
         self.thread_receving.start()
 
-        #self.thread_send = threading.Thread(target = send_thread_func, args = ("send", "loh"))
-        #self.thread_send.start()
+        self.send("join")
 
     def send(self, message):
         if self.connected:
