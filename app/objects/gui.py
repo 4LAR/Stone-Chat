@@ -16,6 +16,10 @@ class WebEnginePage(QWebEnginePage):
         elif message == 'exit':
             window.close()
 
+        elif message.split("|")[0] == 'add_server':
+            message_json = json.loads(str(message.split("|")[1]))
+            server_list.add_server(message_json['ip'], message_json['port'], message_json['name'])
+
         else:
             #message_json = json.loads(str(message))
             client.send(message)

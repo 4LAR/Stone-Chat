@@ -72,14 +72,17 @@
         <div id="settings_add_server" style="display: none;">
 
           <h1 align="center" style="margin: 0px -5px">Add server</h1>
-  
+
           <div class="vl_width" style="position: absolute; left: 0px; top: 40px; width: 450px;"></div>
-  
+
           <input id="settings_name_server_input" class="settings_server_input" style="top: 50px" type=text placeholder="name server" onkeydown="">
-          
-          <input id="settings_ip_server_input" class="settings_server_input" style="top: 95px" type=text placeholder="ip server" onkeydown="">
-          
-          
+
+          <input id="settings_ip_server_input" class="settings_server_input" style="top: 95px; width: 190px" type=text placeholder="ip server" onkeydown="">
+
+          <input id="settings_port_server_input" class="settings_server_input" style="top: 95px; left: 210px; width: 110px" type=text placeholder="port server" onkeydown="">
+
+          <h1 onclick="add_server_db()" style="position: absolute; top: 200px;">save</h1>
+
         </div>
 
         <div id="settings_page" style="display: none;">
@@ -104,7 +107,7 @@
             </div>
           </div>
           <div class="vl_width" style="position: absolute; left: 0px; top: 160px; width: 450px;"></div>
-          
+
           <div class="settings_parametr" style="top: 180px;">
             <label class="switch" style="position: relative;" onclick="check_thame()">
               <input type="checkbox" id="settings_thame_checkbox">
@@ -130,25 +133,22 @@
   var client_ip;
   var client_mac;
 
-  var key = -1;
   document.addEventListener('keydown', function(event){
 
     if(event.keyCode == 27){
       close_settings();
 
-    } else if (key == 17 && event.keyCode == 73) {
-      if (settings_bool) {
-        close_settings();
-      } else {
-        open_settings();
-      }
+    } else if (event.ctrlKey  && event.keyCode == 73) {
+      open_settings();
 
-    } else if (key == 17 && event.keyCode == 87) {
+    } else if (event.ctrlKey && event.keyCode == 78) {
+      open_settings('settings_add_server');
+
+    } else if (event.ctrlKey && event.keyCode == 87) {
       console.log("exit");
 
     }
 
-    key = event.keyCode;
   });
 
     var min_size_x = 640;
@@ -247,6 +247,17 @@
     function chat_go_down() {
       var block = document.querySelector(".messages_list_class");
       block.scrollTop = block.scrollHeight;
+    }
+
+    function add_server_db() {
+
+      message = {
+        name: document.getElementById("settings_name_server_input").value,
+        ip: document.getElementById("settings_ip_server_input").value,
+        port: document.getElementById("settings_port_server_input").value
+      }
+      console.log("add_server|", JSON.stringify(message));
+
     }
 
     function add_server(name, ip) {

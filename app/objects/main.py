@@ -2,6 +2,7 @@ app = QApplication(sys.argv)
 
 info = client_info()
 settings = settings()
+server_list = server_list()
 
 app.setApplicationName("100LAR-WEB")
 app.setOrganizationName("100LAR STUDIO")
