@@ -2,6 +2,12 @@
 def set_user_info():
     window.run_js(window.browser, "set_user_info('%s', '%s', '%s', '%s')" % (settings.name, info.name, info.ip, info.mac))
 
+def load_servers():
+    window.run_js(window.browser, "clear_server_list()")
+    list = server_list.get_servers()
+    for serv in list:
+        window.run_js(window.browser, "add_server('%s', '%s', '%s')" % (serv, list[serv]['ip'], list[serv]['port']))
+
 class WebEnginePage(QWebEnginePage):
     def javaScriptConsoleMessage(self, level, message, lineNumber, sourceID):
         global window
@@ -11,6 +17,7 @@ class WebEnginePage(QWebEnginePage):
         if message == 'load':
             window.load_page = True
             set_user_info()
+            load_servers()
             window.run_js(window.browser, "chat_go_down()")
 
         elif message == 'exit':
@@ -19,6 +26,11 @@ class WebEnginePage(QWebEnginePage):
         elif message.split("|")[0] == 'add_server':
             message_json = json.loads(str(message.split("|")[1]))
             server_list.add_server(message_json['ip'], message_json['port'], message_json['name'])
+            load_servers()
+
+        elif message.split("|")[0] == 'connect_to_server':
+            message_json = json.loads(str(message.split("|")[1]))
+            client.connect(info.ip, [message_json['ip'], int(message_json['port'])])
 
         else:
             #message_json = json.loads(str(message))

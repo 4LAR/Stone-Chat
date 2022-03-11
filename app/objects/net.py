@@ -66,6 +66,8 @@ class client():
 
         self.send("join")
 
+        print("CONNECTED to %s" % addr[0] + ':' + str(addr[1]))
+
     def send(self, message):
         if self.connected:
             self.thread_send = threading.Thread(target = send_thread_func, args = ("send", self.sock, self.server, message))
@@ -76,3 +78,5 @@ class client():
 
         self.connected = False
         connected = False
+
+        print("DISCONNECTED")

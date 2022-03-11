@@ -1,6 +1,6 @@
 
 import socket
-import time 
+import time
 import os
 
 def get_ip():

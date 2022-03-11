@@ -22,6 +22,9 @@ class server_list():
     def get_servers(self):
         return self.list
 
+    def get_servers_json(self):
+        return json.dumps(self.list)
+
     def save_list(self):
         save_dict(self.list, 'servers')
 
