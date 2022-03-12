@@ -30,6 +30,7 @@ class WebEnginePage(QWebEnginePage):
 
         elif message.split("|")[0] == 'connect_to_server':
             message_json = json.loads(str(message.split("|")[1]))
+            client.disconnect()
             client.connect(info.ip, [message_json['ip'], int(message_json['port'])])
 
         else:

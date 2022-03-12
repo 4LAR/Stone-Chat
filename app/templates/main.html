@@ -81,8 +81,9 @@
 
           <input id="settings_port_server_input" class="settings_server_input" style="top: 95px; left: 210px; width: 110px" type=text placeholder="port server" onkeydown="">
 
-          <h1 onclick="add_server_db()" style="position: absolute; top: 200px;">save</h1>
-
+          <div onclick="add_server_db()" class="settings_button" style="left: 10px; top: 150px; width: 80px;">
+            <h2 style="margin: 4px 15px">save</h2>
+          </div>
         </div>
 
         <div id="settings_page" style="display: none;">
@@ -256,6 +257,11 @@
         ip: document.getElementById("settings_ip_server_input").value,
         port: document.getElementById("settings_port_server_input").value
       }
+
+      document.getElementById("settings_name_server_input").value = '';
+      document.getElementById("settings_ip_server_input").value = '';
+      document.getElementById("settings_port_server_input").value = '';
+
       console.log("add_server|", JSON.stringify(message));
 
     }

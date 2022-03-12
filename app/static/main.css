@@ -395,6 +395,22 @@ textarea:focus, input:focus{
   height: 38px;
 }
 
+.settings_button {
+  position: absolute;
+
+  height: 30px;
+
+  border-radius: 10px;
+  background-color: #222226;
+  transition:0.2s all;
+  cursor: pointer;
+}
+
+.settings_button:hover {
+  background-color: #2C2C2F;
+
+}
+
 /* icons */
 .icon {
   filter: invert(40%);

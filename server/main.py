@@ -3,6 +3,8 @@ import socket
 import time
 import os
 import json
+import threading
+import sys
 
 def get_time(): # получить текущее время
     return time.strftime("%H:%M %d-%m-%y", time.localtime())
@@ -31,6 +33,27 @@ run = True
 print("\n Stone Chat Server \n")
 print("IP : " + host)
 print("Port : " + str(port))
+print()
+
+# поток для ввода
+def console():
+    global run
+    global s
+    while run:
+        try:
+            command = input(" >> ")
+
+            if command == 'exit':
+                run = False
+                s.shutdown(socket.SHUT_RDWR)
+            else:
+                print("Error command")
+
+        except:
+            pass
+
+thread_console = threading.Thread(target = console)
+thread_console.start()
 
 while run:
     try:
