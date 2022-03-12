@@ -17,7 +17,7 @@ def receving_thread_func(name, sock):
                 time.sleep(0.2)
                 try:
                     message_json = json.loads(str(data.decode("utf-8")))
-                    window.append_message(message_json['name'], message_json['message'])
+                    window.append_message(message_json['name'], message_json['message'], message_json['data'])
                 except Exception as e:
                     print(e)
 

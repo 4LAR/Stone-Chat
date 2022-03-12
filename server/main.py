@@ -2,6 +2,10 @@
 import socket
 import time
 import os
+import json
+
+def get_time(): # получить текущее время
+    return time.strftime("%H:%M %d-%m-%y", time.localtime())
 
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -40,6 +44,11 @@ while run:
         print(message)
 
         if message != "join":
+
+            message = json.loads(str(message))
+            message['data'] = get_time()
+            message = json.dumps(message)
+            
             for client in clients:
                 s.sendto(message.encode("utf-8"),client)
 

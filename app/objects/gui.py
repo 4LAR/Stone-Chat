@@ -66,9 +66,9 @@ class MainWindow(QMainWindow):
     def run_js(self, view, function=''):
         view.page().runJavaScript(function)
 
-    def append_message(self, name, message):
+    def append_message(self, name, message, data):
 
-        self.run_js(self.browser, "add_message('%s', '%s')" % (name, message))
+        self.run_js(self.browser, "add_message('%s', '%s', '%s')" % (name, message, data))
 
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
