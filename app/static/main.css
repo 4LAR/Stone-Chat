@@ -168,6 +168,11 @@ textarea:focus, input:focus{
 
 }
 
+.message_class:hover .icon {
+  filter: invert(50%);
+  transition:0.2s all;
+}
+
 .message_class:hover {
   background-color: #26262A;
 }
@@ -222,6 +227,10 @@ textarea:focus, input:focus{
   background-color: #3B3B3F;
 
 }
+.server_container:hover .icon {
+  filter: invert(50%);
+  transition:0.2s all;
+}
 
 .add_channel_container {
   position: relative;
@@ -232,6 +241,11 @@ textarea:focus, input:focus{
   background-color: #39393C;
   transition:0.2s all;
   cursor: pointer;
+}
+
+.add_channel_container:hover .icon {
+  filter: invert(50%);
+  transition:0.2s all;
 }
 
 .add_channel_container:hover {
@@ -339,6 +353,11 @@ textarea:focus, input:focus{
 
 }
 
+.settings_exit_button:hover .icon {
+  filter: invert(50%);
+  transition:0.2s all;
+}
+
 .settings_exit_button:hover {
   background-color: #2C2C2F;
 
@@ -418,5 +437,5 @@ textarea:focus, input:focus{
 }
 
 .icon:hover {
-	filter: invert(50%);
+  filter: invert(50%);
 }

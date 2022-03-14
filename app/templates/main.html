@@ -134,6 +134,8 @@
   var client_ip;
   var client_mac;
 
+  var settings = {};
+
   document.addEventListener('keydown', function(event){
 
     if(event.keyCode == 27){
@@ -262,8 +264,23 @@
       document.getElementById("settings_ip_server_input").value = '';
       document.getElementById("settings_port_server_input").value = '';
 
+      close_settings();
+
       console.log("add_server|", JSON.stringify(message));
 
+    }
+
+    function read_settings(settings_json) {
+      settings = JSON.parse(settings_json)
+
+      if (settings['light_theme']) {
+        dark_mode = document.getElementById('settings_thame_checkbox').checked = true;
+        switch_theme();
+      }
+    }
+
+    function save_settings() {
+      console.log("save_settings|", JSON.stringify(settings));
     }
 
     function connect_to_server(name, ip, port) {
@@ -273,6 +290,10 @@
         port: port
       }
       console.log("connect_to_server|", JSON.stringify(message));
+
+      document.getElementById("chat_name").innerHTML = name;
+      document.getElementById("chat_messages_list").innerHTML = '';
+
     }
 
     function clear_server_list() {
@@ -349,6 +370,8 @@
 
     function check_thame() {
       dark_mode = document.getElementById('settings_thame_checkbox').checked;
+      settings['light_theme'] = dark_mode;
+      save_settings();
       switch_theme();
     }
 

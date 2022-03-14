@@ -39,6 +39,9 @@ print()
 def console():
     global run
     global s
+
+    global clients
+
     while run:
         try:
             command = input(" >> ")
@@ -46,6 +49,13 @@ def console():
             if command == 'exit':
                 run = False
                 s.shutdown(socket.SHUT_RDWR)
+
+            elif command == 'clients':
+                if len(clients) > 0:
+                    for client in clients:
+                        print(client)
+                else:
+                    print("no clients")
             else:
                 print("Error command")
 
@@ -66,7 +76,10 @@ while run:
 
         print(message)
 
-        if message != "join":
+        if message == "join":
+            s.sendto("ok".encode("utf-8") ,addr)
+            
+        else:
 
             message = json.loads(str(message))
             message['data'] = get_time()

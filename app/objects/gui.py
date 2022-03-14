@@ -8,6 +8,17 @@ def load_servers():
     for serv in list:
         window.run_js(window.browser, "add_server('%s', '%s', '%s')" % (serv, list[serv]['ip'], list[serv]['port']))
 
+def load_settings():
+    settings_dict = {
+        "name": settings.name,
+        "light_theme": settings.light_theme,
+        "save_history": settings.save_history
+
+    }
+    settings_json = json.dumps(settings_dict)
+    window.run_js(window.browser, "read_settings('%s')" % (settings_json))
+
+
 class WebEnginePage(QWebEnginePage):
     def javaScriptConsoleMessage(self, level, message, lineNumber, sourceID):
         global window
@@ -18,6 +29,7 @@ class WebEnginePage(QWebEnginePage):
             window.load_page = True
             set_user_info()
             load_servers()
+            load_settings()
             window.run_js(window.browser, "chat_go_down()")
 
         elif message == 'exit':
@@ -32,6 +44,15 @@ class WebEnginePage(QWebEnginePage):
             message_json = json.loads(str(message.split("|")[1]))
             client.disconnect()
             client.connect(info.ip, [message_json['ip'], int(message_json['port'])])
+
+        elif message.split("|")[0] == 'save_settings':
+            message_json = json.loads(str(message.split("|")[1]))
+
+            settings.name = message_json['name']
+            settings.light_theme = message_json['light_theme']
+            settings.save_history = message_json['save_history']
+
+            settings.save_settings()
 
         else:
             #message_json = json.loads(str(message))

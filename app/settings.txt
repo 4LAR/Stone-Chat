@@ -1,0 +1,9 @@
+[user]
+name = 100LAR
+
+[gui]
+light_theme = False
+
+[chat]
+save_history = True
+
