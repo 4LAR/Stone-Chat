@@ -124,10 +124,40 @@
         <h2 style="margin: 10px 50px">EXIT</h2>
       </div>
 
+      <div id="context_menu" class="context_menu_class">
+
+      </div>
+
     </div>
 
   </body>
   <script type="text/javascript">
+
+  //const contextMenu = document.getElementById("context_menu");
+
+  if (document.addEventListener) {
+
+    /*document.addEventListener("click", function(e) {
+      if (e.target.offsetParent != contextMenu) {
+        document.getElementById("context_menu").style.display = 'none';
+    }, false);*/
+
+    document.addEventListener('contextmenu', function(e) {
+      //here you draw your own menu
+
+      //const { clientX: mouseX, clientY: mouseY } = event;
+      //document.getElementById("context_menu").style.display = 'block';
+      //document.getElementById("context_menu").style.top = `${mouseY}px`;
+      //document.getElementById("context_menu").style.left = `${mouseX}px`;
+
+      e.preventDefault();
+    }, false);
+  } else {
+    document.attachEvent('oncontextmenu', function() {
+      //alert("You've tried to open context menu");
+      window.event.returnValue = false;
+    });
+  }
 
   var client_name;
   var client_user;
@@ -254,19 +284,25 @@
 
     function add_server_db() {
 
-      message = {
-        name: document.getElementById("settings_name_server_input").value,
-        ip: document.getElementById("settings_ip_server_input").value,
-        port: document.getElementById("settings_port_server_input").value
-      }
+      if (
+          (document.getElementById("settings_name_server_input").value.length > 0) &&
+          (document.getElementById("settings_ip_server_input").value.length > 0) &&
+          (document.getElementById("settings_port_server_input").value.length > 0)
+        ) {
+          message = {
+            name: document.getElementById("settings_name_server_input").value,
+            ip: document.getElementById("settings_ip_server_input").value,
+            port: document.getElementById("settings_port_server_input").value
+          }
 
-      document.getElementById("settings_name_server_input").value = '';
-      document.getElementById("settings_ip_server_input").value = '';
-      document.getElementById("settings_port_server_input").value = '';
+          document.getElementById("settings_name_server_input").value = '';
+          document.getElementById("settings_ip_server_input").value = '';
+          document.getElementById("settings_port_server_input").value = '';
 
-      close_settings();
+          close_settings();
 
-      console.log("add_server|", JSON.stringify(message));
+          console.log("add_server|", JSON.stringify(message));
+        }
 
     }
 

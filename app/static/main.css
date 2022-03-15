@@ -430,6 +430,21 @@ textarea:focus, input:focus{
 
 }
 
+/* context menu */
+.context_menu_class {
+  position: fixed;
+
+  left: 0px;
+  top: 0px;
+
+  width: 100px;
+  height: 100px;
+
+  background-color: #2C2C2F;
+
+  display: none;
+}
+
 /* icons */
 .icon {
   filter: invert(40%);
