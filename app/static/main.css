@@ -396,6 +396,27 @@ textarea:focus, input:focus{
   background-color: #2C2C2F;
 }
 
+.settings_profile_input {
+  width: 310px;
+  height: 30px;
+  position: absolute;
+  border-radius: 5px;
+  background-color: #2C2C2F;
+
+  color: #808080;
+  border: 0;
+
+  position: absolute;
+  bottom: 1px;
+  left: 300px;
+
+  font-weight: 900;
+  font-size: large;
+
+  padding-top:5px;
+
+}
+
 .settings_parametr {
   left: 10px;
   position: relative;

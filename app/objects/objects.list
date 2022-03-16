@@ -3,4 +3,5 @@ gui.py
 net.py
 server_list.py
 settings.py
+history.py
 main.py

@@ -1,10 +1,4 @@
 
-def save_dict(dict, name):
-    json.dump(dict, open(str(name) + '.json','w'))
-
-def read_dict(name):
-    return json.load(open(str(name) + '.json'))
-
 class server_list():
     def __init__(self):
         self.list = {}

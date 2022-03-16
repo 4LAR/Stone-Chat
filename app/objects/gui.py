@@ -32,6 +32,9 @@ class WebEnginePage(QWebEnginePage):
             load_settings()
             window.run_js(window.browser, "chat_go_down()")
 
+        elif message == 'clear_all_history':
+            history.history_clear_all()
+
         elif message == 'exit':
             window.close()
 
@@ -43,7 +46,14 @@ class WebEnginePage(QWebEnginePage):
         elif message.split("|")[0] == 'connect_to_server':
             message_json = json.loads(str(message.split("|")[1]))
             client.disconnect()
-            client.connect(info.ip, [message_json['ip'], int(message_json['port'])])
+            client.connect(message_json['name'], info.ip, [message_json['ip'], int(message_json['port'])])
+
+            for mes in history.get_history(message_json['name']):
+                try:
+                    window.append_message(mes['name'], mes['message'], mes['data'])
+                except:
+                    pass
+                    
 
         elif message.split("|")[0] == 'save_settings':
             message_json = json.loads(str(message.split("|")[1]))
@@ -98,7 +108,7 @@ class MainWindow(QMainWindow):
         self.load_page = False
 
         self.setGeometry(100, 100, 1280, 720)
-        self.setMinimumSize(640, 480)
+        self.setMinimumSize(650, 480)
         #self.setFixedSize(self.width(), self.height())
 
         self.browser = QWebEngineView(self)

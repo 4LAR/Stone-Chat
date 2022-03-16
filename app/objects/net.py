@@ -5,6 +5,7 @@ connected = False
 def receving_thread_func(name, sock):
     global connected
     global messages
+    global client
 
     print(connected)
     global window
@@ -18,8 +19,12 @@ def receving_thread_func(name, sock):
                 try:
                     message_json = json.loads(str(data.decode("utf-8")))
                     window.append_message(message_json['name'], message_json['message'], message_json['data'])
+                    
+                    if settings.save_history:
+                        history.add_history_message(client.name, message_json)
+
                 except Exception as e:
-                    print(e)
+                    print("receving_thread_func: ", e)
 
         except Exception as e:
             pass
@@ -40,6 +45,7 @@ class client():
     def __init__(self):
         # статус подключения
         self.connected = False
+        self.name = ''
 
         # поток для получения данных
         self.thread_receving = None
@@ -50,7 +56,7 @@ class client():
         self.sock = None
         self.server = None
 
-    def connect(self, user_ip, addr):
+    def connect(self, name, user_ip, addr):
         self.sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         self.sock.bind((user_ip, 0))
         self.server = (addr[0], int(addr[1]))
@@ -64,6 +70,7 @@ class client():
         self.thread_receving = threading.Thread(target = receving_thread_func, args = ("receve", self.sock))
         self.thread_receving.start()
 
+        self.name = name
         self.send("join")
 
         print("CONNECTED to %s" % addr[0] + ':' + str(addr[1]))
