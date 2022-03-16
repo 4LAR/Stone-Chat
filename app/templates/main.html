@@ -45,6 +45,11 @@
         <br>
         <div style="direction: ltr;">
           <!--button add server-->
+          <div class="add_channel_container" onclick="open_home()">
+            <image style="margin: 5px 3px" class="icon" width="30" height="30" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIFNWRyBFZGl0b3IgLSBodHRwOi8vZ2l0aHViLmNvbS9temFsaXZlL1NWRyBFZGl0b3IvIC0tPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBoZWlnaHQ9IjM1MiIgd2lkdGg9IjM1MiIgeT0iLTEiIHg9Ii0xIiBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiLz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8cGF0aCBzdHJva2U9IiMwMDAiIGZpbGw9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLW9wYWNpdHk9Im51bGwiIGZpbGwtb3BhY2l0eT0ibnVsbCIgZD0ibTM0My4yNzI3MywxNzQuNTUxMjVsLTQzLjYyMDk4LC00My42MjA5OWwwLC0xMDQuMTgwMzZsLTM3LjM5NTUzLDBsMCw2Ni43ODQ4NGwtODcuMjU2MjEsLTg3LjI1NjIybC0xNjguMjcyNzMsMTY4LjI3MjcybDQwLjA1OTUxLC0wLjk1NDQ3bDAsMTcwLjEyNDY5bDI1NC42NDU2OSwwbDAsLTE2OS4xNzAyMmw0MS44NDAyNCwwbDAsMC4wMDAwMXptLTE2OC4yNzI3MiwxNDQuODM4MTlsLTgzLjA5NjQxLDBsMCwtOTkuNzIxMzhsODMuMDk2NDEsMGwwLDk5LjcyMTM4em04MC43MzE1OCwtNDIuNzM3NzNsLTU0LjYwNDU4LDBsMCwtNTcuNTgxOThsNTQuNjA0NTgsMGwwLDU3LjU4MTk4eiIgaWQ9InN2Z18xIi8+CiA8L2c+Cjwvc3ZnPg==">
+            <h2 style="margin: -30px 50px; white-space: nowrap;">Home page</h2>
+          </div>
+          <div style="height: 5px"></div>
           <div class="add_channel_container" onclick="open_settings('settings_add_server')">
             <image style="margin: 5px 3px" class="icon" width="30" height="30" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzUwIiBoZWlnaHQ9IjM1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIFNWRyBFZGl0b3IgLSBodHRwOi8vZ2l0aHViLmNvbS9temFsaXZlL1NWRyBFZGl0b3IvIC0tPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBoZWlnaHQ9IjM1MiIgd2lkdGg9IjM1MiIgeT0iLTEiIHg9Ii0xIiBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiLz4KIDwvZz4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8cGF0aCBmaWxsPSIjZmZmIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjUiIGlkPSJzdmdfMSIvPgogIDxwYXRoIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxLjUiIG9wYWNpdHk9IjAuNSIgaWQ9InN2Z18zIi8+CiAgPHBhdGggZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuNSIgb3BhY2l0eT0iMC41IiBpZD0ic3ZnXzUiLz4KICA8cGF0aCBmaWxsPSIjMDAwMDAwIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjUiIGlkPSJzdmdfNiIvPgogIDxwYXRoIHN0cm9rZT0iIzAwMCIgaWQ9InN2Z18yIiBkPSJtNy40OTk5ODUsMTE4LjIxNDE1bDExMC43MTQxNTQsMGwwLC0xMTAuNzE0MTY1bDExMy41NzE3MDYsMGwwLDExMC43MTQxNjVsMTEwLjcxNDE2NSwwbDAsMTEzLjU3MTcxN2wtMTEwLjcxNDE2NSwwbDAsMTEwLjcxNDE1NGwtMTEzLjU3MTcwNiwwbDAsLTExMC43MTQxNTRsLTExMC43MTQxNTQsMGwwLC0xMTMuNTcxNzE3eiIgZmlsbC1vcGFjaXR5PSJudWxsIiBzdHJva2Utb3BhY2l0eT0ibnVsbCIgc3Ryb2tlLXdpZHRoPSIwIiBmaWxsPSIjMDAwMDAwIi8+CiA8L2c+Cjwvc3ZnPg==">
             <h2 style="margin: -30px 50px; white-space: nowrap;">Add server</h2>
@@ -242,7 +247,7 @@
 
       document.getElementById("settings_name").innerHTML = "NAME: ";
       document.getElementById("settings_name_input").value = name
-      
+
       document.getElementById("settings_user").innerHTML = "USER: " + user;
       document.getElementById("settings_ip").innerHTML = "IP: " + ip;
       document.getElementById("settings_mac").innerHTML = "MAC: " + mac;
@@ -368,9 +373,13 @@
 
       document.getElementById("chat_name").innerHTML = name;
       document.getElementById("main_page").style.display = 'none';
-      
+
       clear_messages();
 
+    }
+
+    function open_home() {
+      document.getElementById('main_page').style.display = "block";
     }
 
     function clear_server_list() {
