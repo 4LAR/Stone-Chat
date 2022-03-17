@@ -31,6 +31,7 @@ class WebEnginePage(QWebEnginePage):
             load_servers()
             load_settings()
             window.run_js(window.browser, "chat_go_down()")
+            window.run_js(window.browser, "resize()")
 
         elif message == 'clear_all_history':
             history.history_clear_all()

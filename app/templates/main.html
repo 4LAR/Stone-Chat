@@ -17,10 +17,6 @@
 
     <!--messages list-->
     <div class="messages_list_class">
-      <div id="main_page">
-        <h1 align="center">Stone chat</h1>
-        <h2 align="center">alpha test</h2>
-      </div>
       <ul id="chat_messages_list">
         <li>
 
@@ -37,6 +33,11 @@
 
       <image onclick="check_message()" style="cursor: pointer; position: absolute; right: 135px; bottom: 11px" class="icon" width="35" height="35" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgd2lkdGg9IjIwcHgiIGhlaWdodD0iMThweCIgdmlld0JveD0iMCAwIDIwIDE4IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPg0KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggNTIuNSAoNjc0NjkpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPg0KICAgIDx0aXRsZT5zZW5kPC90aXRsZT4NCiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4NCiAgICA8ZyBpZD0iSWNvbnMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPg0KICAgICAgICA8ZyBpZD0iUm91bmRlZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM3NC4wMDAwMDAsIC0xNTI5LjAwMDAwMCkiPg0KICAgICAgICAgICAgPGcgaWQ9IkNvbnRlbnQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMC4wMDAwMDAsIDE0MjguMDAwMDAwKSI+DQogICAgICAgICAgICAgICAgPGcgaWQ9Ii1Sb3VuZC0vLUNvbnRlbnQtLy1zZW5kIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNzIuMDAwMDAwLCA5OC4wMDAwMDApIj4NCiAgICAgICAgICAgICAgICAgICAgPGc+DQogICAgICAgICAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aCIgcG9pbnRzPSIwIDAgMjQgMCAyNCAyNCAwIDI0Ij48L3BvbHlnb24+DQogICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMy40LDIwLjQgTDIwLjg1LDEyLjkyIEMyMS42NiwxMi41NyAyMS42NiwxMS40MyAyMC44NSwxMS4wOCBMMy40LDMuNiBDMi43NCwzLjMxIDIuMDEsMy44IDIuMDEsNC41MSBMMiw5LjEyIEMyLDkuNjIgMi4zNywxMC4wNSAyLjg3LDEwLjExIEwxNywxMiBMMi44NywxMy44OCBDMi4zNywxMy45NSAyLDE0LjM4IDIsMTQuODggTDIuMDEsMTkuNDkgQzIuMDEsMjAuMiAyLjc0LDIwLjY5IDMuNCwyMC40IFoiIGlkPSLwn5S5SWNvbi1Db2xvciIgZmlsbD0iIzFEMUQxRCI+PC9wYXRoPg0KICAgICAgICAgICAgICAgICAgICA8L2c+DQogICAgICAgICAgICAgICAgPC9nPg0KICAgICAgICAgICAgPC9nPg0KICAgICAgICA8L2c+DQogICAgPC9nPg0KPC9zdmc+" />
 
+    </div>
+
+    <div id="main_page" class="main_page">
+      <h1 align="center">Stone chat</h1>
+      <h2 align="center">alpha test</h2>
     </div>
 
     <!--channels list-->
@@ -229,6 +230,10 @@
 
       //document.querySelector('.settings_list').style.width = (1080 + scale_x) + "px";
       document.querySelector('.settings_list').style.height = (665 + scale_y) + "px";
+
+
+      document.querySelector('.main_page').style.width = (1080 + scale_x) + "px";
+      document.querySelector('.main_page').style.height = (665 + scale_y) + "px";
 
       chat_go_down();
 

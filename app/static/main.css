@@ -212,6 +212,8 @@ textarea:focus, input:focus{
   top: 55px;
   width: 200px;
   height: 610px;
+
+  transition:0.2s all;
 }
 
 .server_container {
@@ -270,6 +272,8 @@ textarea:focus, input:focus{
   width: 200px;
   height: 100%;
   top: 0px;
+
+  transition:0.2s all;
 
 }
 
@@ -465,6 +469,19 @@ textarea:focus, input:focus{
   background-color: #2C2C2F;
 
   display: none;
+}
+
+/* main page */
+.main_page {
+  position: fixed;
+  left: 200px;
+  top: 55px;
+
+  height: 665;
+  width: 1080;
+
+  background-color: #222226;
+
 }
 
 /* icons */
