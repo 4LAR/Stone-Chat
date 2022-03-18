@@ -484,6 +484,26 @@ textarea:focus, input:focus{
 
 }
 
+/* top bar classes */
+.name_chat {
+  position: absolute;
+
+  left: 350px;
+  top: 8px;
+  
+  height: 40px;
+  width: 800px;
+  border-radius: 10px;
+  background-color: #222226;
+  cursor: pointer;
+
+}
+
+.name_chat:hover .icon {
+  filter: invert(50%);
+  transition:0.2s all;
+}
+
 /* icons */
 .icon {
   filter: invert(40%);

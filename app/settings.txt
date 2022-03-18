@@ -2,7 +2,7 @@
 name = 100LAR
 
 [gui]
-light_theme = False
+light_theme = True
 
 [chat]
 save_history = True
