@@ -345,7 +345,7 @@ textarea:focus, input:focus{
   position: absolute;
 
   right: 10px;
-  top: -48px;
+  bottom: 10px;
 
   width: 120px;
   height: 40px;
