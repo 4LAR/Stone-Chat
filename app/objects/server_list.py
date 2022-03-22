@@ -5,6 +5,10 @@ class server_list():
         if not self.read_list():
             self.save_list()
 
+    def edit_server(self, name_old, ip, port, name):
+        self.del_server(old_name)
+        self.add_server(ip, port, name)
+
     def add_server(self, ip, port, name):
         self.list[name] = {'ip': ip, 'port': port}
         self.save_list()

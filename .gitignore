@@ -1,2 +1,6 @@
 
 *.pyc
+old/client_settings.txt
+app/history.json
+app/servers.json
+app/settings.txt
